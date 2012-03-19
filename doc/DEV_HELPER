@@ -1,0 +1,63 @@
+Shell-Extensions (bash)
+=======================
+
+# Pfad zum Root des lokalen CrmConnector-Repositories
+crm_connector_base="$HOME/Work/Infopark/OMC/omc_connector"
+# Schnell dahinkommen :-)
+alias wc='cd '"$crm_connector_base"
+
+# Ruby-OMC hoch-
+alias ocup="(cd \"$omc_connector_base\"/tmp/omc_ruby && ruby script/server -e production -p 4000 -d)"
+# und runterfahren
+alias ocdown="file=\"$omc_connector_base\"/tmp/omc_ruby/tmp/pids/server.pid; test -f \"\$file\" &&  kill \`cat \"\$file\"\`"
+unset omc_connector_base
+
+# Im OMC-Log schauen
+alias vl="view tmp/omc_ruby/log/production.log"
+# Im OMC Daten gucken
+alias osc='(cd tmp/omc_ruby && script/console production)'
+# Commandline des Ruby-Connectors
+alias csc='(cd ruby && script/console)'
+# Typische Aliase für die (Ruby-)Tests
+alias rs="rake test:ruby:setup"
+alias rl="rake test:ruby:load_fixtures"
+alias rr="rake test:ruby:run"
+
+# Falls die Konnektoren zusammen mit Weiterentwicklungen im OMC gebaut werden
+export OMC_GIT_URL="$HOME/Work/Infopark/OMC/git"
+export OMC_BRANCH="origin/dev"
+
+
+
+Ruby-Connector-Debugging
+========================
+# fährt OMC auf Port 3999 hoch
+$ rake test:ruby:setup
+
+# Tipparbeit sparen: Alle Resourcen auch ohne Präfix 'Infopark::Crm' verfügbar machen
+# Kurzform für Account = Infopark::Crm::Account; Activity = Infopark::Crm::Activity ...
+$ cat > ~/omcc.rb << 'EOD'
+Infopark::Crm.constants.map {|c|
+  model = Infopark::Crm.const_get(c)
+  model if model.ancestors.include?(Infopark::Crm::Resource)
+}.compact.each {|c|
+  Kernel.const_set(c.name.gsub(/.*::/, ""), c)
+}
+EOD
+
+# Ruby-Console starten - Alias für Konfiguration und Helper (s.o.)
+$ alias csc='(cd ruby && script/console -r test/test_config -r ~/omcc)'
+$ csc
+
+# Ruby-Console benutzen
+# Umkonfigurieren - bereits erfolgt durch test/test_config
+Infopark::Crm::configure do {|c| c.url = "http://localhost:3999"}
+# Ausprobieren - mit Helper auch direkt Account.create()
+a = Infopark::Crm::Account.create
+a.valid?
+a.errors
+
+Tools
+=====
+# In der Web-CRM-Konsole alle Webservice-URLs auflisten
+Omc::Application.routes.routes.each.select{|r|puts r.to_s.gsub(/\(.*/,'')if r.path.include?'/api'}

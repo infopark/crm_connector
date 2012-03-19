@@ -1,0 +1,59 @@
+
+==Quick Start
+
+  gem 'infopark_crm_connector'
+
+  require 'infopark_crm_connector'
+
+  Infopark::Crm.configure do |configuration|
+    configuration.url = "https://webcrm.server/url"
+    configuration.login = "webcrm_user"
+    configuration.api_key = "api_key_of_webcrm_user"
+  end
+
+  # Communicate with the WebCRM
+  Infopark::Crm::Contact.first.last_name
+
+See Infopark::Crm.configure for a complete list of configuration keys.
+
+The subclasses of Infopark::Crm::Resource (which itself inherits from
+ActiveResource::Base) represent the WebCRM's domain models (accounts, contacts, events etc.).
+
+==Examples
+===Contact
+  # Retrieve the contact identified by the login 'root'
+  contact = Infopark::Crm::Contact.search(:params => {:login => 'root'}).first
+
+  # Change this contact's mail address
+  contact.update_attribute(:email, 'root@example.com')
+
+  # Send a new password request mail to the contact's address
+  contact.password_request
+
+===Activity
+
+  # Configure a new activity kind
+  Infopark::Crm::CustomType.create(:name => 'contact form', :kind => 'Activity',
+      :states => ['new'])
+
+  # Create a new activity
+  activity = Infopark::Crm::Activity.new(:kind => 'contact form')
+
+  # Set properties of this activity
+  activity.title = 'Sprechen Sie Deutsch?'
+
+  # Switch to a different request locale
+  Infopark::Crm.configure {|c| c.locale = 'de'}
+
+  # Post the activity (which is going to fail)
+  activity.save
+  # => false
+
+  # Get to know what's missing
+  activity.errors.messages
+  # => {:state=>["ist kein gültiger Wert"]}
+
+For further information on the WebCRM web service, have a look at
+{this documentation}[https://www.infopark.com/2486249/70-Webservice-API].
+
+:include: LICENSE

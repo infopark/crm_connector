@@ -1,0 +1,3 @@
+[submodule "rake_support"]
+	path = rake_support
+	url = git@github.com:infopark/rake_support.git

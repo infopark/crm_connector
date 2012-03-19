@@ -1,0 +1,11 @@
+test/config/database_*.yml
+*.sw?
+.DS_Store
+.rbenv-version
+coverage
+tmp
+rdoc/*
+*.gem
+.bundle
+Gemfile.lock
+pkg/*
