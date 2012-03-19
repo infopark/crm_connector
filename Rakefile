@@ -19,4 +19,6 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
+require 'appraisal'
+
 task :default => :test

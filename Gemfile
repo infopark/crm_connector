@@ -8,3 +8,5 @@ gem "rake", "0.8.7"
 gem "rdoc"
 gem "test-unit"
 gem "webmock"
+
+gem "appraisal"

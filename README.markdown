@@ -13,6 +13,12 @@
     # Configure test/test_config.rb with an empty WebCRM Tenant
     bundle exec rake test
 
+
+Test all supported versions:
+
+    bundle exec rake appraisal:install
+    bundle exec rake appraisal
+
 # Build and install gem
 
     gem build infopark_crm_connector.gemspec
