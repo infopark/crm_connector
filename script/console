@@ -1,0 +1,2 @@
+#!/bin/sh
+exec irb -r irb/completion -r ./`dirname "$0"`/connector_initializer "$@"
