@@ -107,6 +107,7 @@ Run tests with all supported versions of Active Resource:
 * Removed `configuration.debug`.
 * Renamed `Infopark::Crm::AuthenticationFailed` to `Infopark::Crm::Errors::AuthenticationFailed`.
 * Merged `Infopark::Crm::Core::Base` and `Infopark::Crm::Resource` into `Infopark::Crm::Core:Resource`.
+* Removed all `Infopark::Crm::Default::*` classes.
 
 ## Version 0.9.2 - 2012-03-19
 * Security improvement for `Contact.authenticate`, `Contact.password_set` and `contact.password_request`
