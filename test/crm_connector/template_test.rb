@@ -14,7 +14,7 @@ module Infopark; module Crm
 
     def test_update_all
       templates = System.templates
-      text = Time.now.to_s
+      text = SecureRandom.hex(8)
       templates['test'] = text
       System.templates = templates
       templates = System.templates

@@ -8,7 +8,7 @@ module Infopark; module Crm
   class EventUpdateTest < ConnectorTestCase
     def self.startup
       CrmSetup.custom_types
-      @@event_name = "Event_#{Time.now.tv_sec}"
+      @@event_name = "Event_#{SecureRandom.hex(8)}"
       @@event = Event.create({
           :name => @@event_name,
           :kind => 'base event',

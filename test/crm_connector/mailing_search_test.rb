@@ -14,7 +14,7 @@ module Infopark; module Crm
           end
         end
 
-        @@unique_mailing_title = "Mailing Nr. #{Time.new.to_i}"
+        @@unique_mailing_title = "Mailing Nr. #{SecureRandom.hex(8)}"
         Mailing.create(:title => @@unique_mailing_title, :mailing_type => 'i')
 
         CrmSetup.custom_types

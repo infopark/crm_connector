@@ -11,22 +11,22 @@ module Infopark; module Crm
         t.custom_attributes.reject! { |a| a.name == 'contact_test' }
         t.custom_attributes.push({:name => 'contact_test', :type => 'string'})
         t.save!
-        @@now = Time.new.to_i
+        @@unique_value = "Muster#{SecureRandom.hex(8)}"
         Contact.create(:last_name => 'Custom', :gender=> 'M', :language => 'en',
-            :custom_contact_test => "Muster#{@@now}")
-        Contact.create(:last_name => "Muster#{@@now}", :gender => 'M', :language => 'en',
+            :custom_contact_test => @@unique_value)
+        Contact.create(:last_name => @@unique_value, :gender => 'M', :language => 'en',
             :custom_contact_test => "Not Muster")
         wait_for_indexer
       end
     end
 
     def test_search_should_with_q_find_custom_field
-      result = Contact.search(:params => {:q => "Muster#{@@now}"})
+      result = Contact.search(:params => {:q => @@unique_value})
       assert_equal 2, result.size
     end
 
     def test_search_with_custom_field_should_find_custom_field
-      result = Contact.search(:params => {:custom_contact_test => "Muster#{@@now}"})
+      result = Contact.search(:params => {:custom_contact_test => @@unique_value})
       assert_equal 1, result.size
     end
   end

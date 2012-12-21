@@ -10,8 +10,7 @@ module Infopark; module Crm
       # This is needed to not get AWS::DynamoDB::Errors::ConditionalCheckFailedException
       sleep 0.5
 
-      time = Time.now.to_f.to_s.gsub('.', '')
-      role = Role.create(:name => "ShowRole#{time}", :description => 'Hello World')
+      role = Role.create(:name => "ShowRole#{SecureRandom.hex(8)}", :description => 'Hello World')
 
       role = assert_show_succeeds(Role, role.id)
       assert_property(role, :description, 'Hello World')

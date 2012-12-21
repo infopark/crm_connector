@@ -11,8 +11,7 @@ module Infopark; module Crm
       # This is needed to not get AWS::DynamoDB::Errors::ConditionalCheckFailedException
       sleep 0.5
 
-      time = Time.now.to_f.to_s.gsub('.', '')
-      role = Role.create(:name => "DeleteRole#{time}")
+      role = Role.create(:name => "DeleteRole#{SecureRandom.hex(8)}")
       assert_not_nil role.id
 
       assert_kind_of Net::HTTPOK, role.destroy

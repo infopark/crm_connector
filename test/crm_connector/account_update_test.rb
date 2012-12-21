@@ -7,7 +7,7 @@ module Infopark; module Crm
 
   class AccountUpdateTest < ConnectorTestCase
     def setup
-      @account = Account.create(:name => "Account #{Time.now.to_f}")
+      @account = Account.create(:name => "Account #{SecureRandom.hex(8)}")
     end
 
     def test_updating_an_account_should_be_successful

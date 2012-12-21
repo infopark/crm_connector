@@ -13,7 +13,7 @@ module Infopark; module Crm
             Account.create(:name => 'Search')
           end
         end
-        @@account_group_name = "Subdevision Inc. #{Time.new.to_i}"
+        @@account_group_name = "Subdevision Inc. #{SecureRandom.hex(8)}"
         Account.create(:name => @@account_group_name, :account_group => 'SomeAccountName')
 
         wait_for_indexer

@@ -7,7 +7,7 @@ module Infopark; module Crm
 
   class MailingUpdateTest < ConnectorTestCase
     def self.startup
-      @@mailing_name = "Mailing_#{Time.now.tv_sec}"
+      @@mailing_name = "Mailing_#{SecureRandom.hex(8)}"
       @@mailing = Mailing.create({
           :name => @@mailing_name,
           :mailing_type => 'i',

@@ -8,9 +8,11 @@ module Infopark; module Crm
   class ContactShowTest < ConnectorTestCase
     class << self
       def startup
-        @@account_id = Account.create(:name => 'Moritz AG #{Time.new.to_i}', :home_page => 'moritz_example.com').id
+        login = SecureRandom.hex(8)
+        @@account_id = Account.create(:name => "Moritz AG #{login}",
+            :home_page => 'moritz_example.com').id
         @@contact_id = Contact.create(:last_name => 'und Moritz', :gender=> 'M',
-            :language => 'en', :login => Time.new.to_i, :account_id => @@account_id).id
+            :language => 'en', :login => login, :account_id => @@account_id).id
       end
     end
 

@@ -17,7 +17,7 @@ module Infopark; module Crm
 
     def test_create_for_an_account_should_be_successful
       contact = Contact.create({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :language => 'de',
           :gender => 'M',
@@ -28,7 +28,7 @@ module Infopark; module Crm
 
     def test_create_for_an_account_by_save_should_be_successful
       contact = Contact.new({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :language => 'de',
           :gender => 'M',
@@ -40,7 +40,7 @@ module Infopark; module Crm
 
     def pending_test_create_for_an_invalid_account_should_fail
       contact = Contact.create({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :language => 'de',
           :gender => 'M',
@@ -51,7 +51,7 @@ module Infopark; module Crm
 
     def pending_test_create_for_an_invalid_account_by_save_should_fail
       contact = Contact.new({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :language => 'de',
           :gender => 'M',
@@ -63,7 +63,7 @@ module Infopark; module Crm
 
     def test_create_without_account_should_be_successful
       contact = Contact.create({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :gender => 'M',
           :language => 'de',
@@ -73,7 +73,7 @@ module Infopark; module Crm
 
     def test_create_without_account_by_save_should_be_successful
       contact = Contact.new({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :gender => 'M',
           :language => 'de',
@@ -84,7 +84,7 @@ module Infopark; module Crm
 
     def test_create_with_account_and_location_properties_should_be_successful
       contact = Contact.create({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :language => 'de',
           :gender => 'M',
@@ -99,7 +99,7 @@ module Infopark; module Crm
 
     def test_create_with_account_and_location_properties_by_save_should_be_successful
       contact = Contact.new({
-          :last_name => "Graf #{Time.now.to_f}",
+          :last_name => "Graf #{SecureRandom.hex(14)}",
           :title => '',
           :language => 'de',
           :gender => 'M',
