@@ -34,6 +34,7 @@ module Infopark; module Crm; module Core
     # @private
     def self.inherited(subclass)
       subclass.schema = schema
+      subclass.format = format
     end
 
     # @private
