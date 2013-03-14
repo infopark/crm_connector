@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/infopark/crm_connector.png?branch=master)](https://travis-ci.org/infopark/crm_connector)
 
-Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm). It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/3.2.8/frames). Currently, Active Resource 3.0, 3.1 and 3.2 in combination with Ruby 1.8.7 and 1.9.x are tested and supported.
+Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm). It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/). Currently, Active Resource 3.0, 3.1 and 3.2 in combination with Ruby 1.8.7, 1.9.x and 2.0.0 are tested and supported.
 
 # Installation
 
