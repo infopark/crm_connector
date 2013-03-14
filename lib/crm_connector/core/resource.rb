@@ -32,6 +32,11 @@ module Infopark; module Crm; module Core
     cattr_writer :deprecation_warnings
 
     # @private
+    def self.inherited(subclass)
+      subclass.schema = schema
+    end
+
+    # @private
     def self.deprecated(deprecated, hint = nil)
       return unless @@deprecation_warnings
       text = "[WebCrmConnector] #{deprecated} is deprecated."
@@ -75,7 +80,7 @@ module Infopark; module Crm; module Core
     # @private
     def self.schema=(definition)
       ares_compatible_definition = {}
-      definition.each do |k, v|
+      (definition || []).each do |k, v|
         ares_compatible_definition[k] = SchemaSupport.schema_type(v)
       end
       super(ares_compatible_definition)
@@ -94,9 +99,16 @@ module Infopark; module Crm; module Core
       end
 
       def self.schema_type(type)
-        default_mapping = ::ActiveResource::Schema::KNOWN_ATTRIBUTE_TYPES
-        return type if default_mapping.include?(type.to_s)
-        return schema_mapping[type.to_sym]
+        if type.present?
+          default_mapping = ::ActiveResource::Schema::KNOWN_ATTRIBUTE_TYPES
+          if default_mapping.include?(type.to_s)
+            type
+          else
+            schema_mapping[type.to_sym]
+          end
+        else
+          nil
+        end
       end
 
       add :text => :string
