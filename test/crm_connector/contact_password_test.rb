@@ -13,7 +13,7 @@ module Infopark; module Crm
           :last_name => 'Passwort',
           :language => 'de',
           :gender => 'M',
-          :email => 'test@example.com',
+          :email => 'success@simulator.amazonses.com',
           :want_geo_location => false
           })
       c.save!
