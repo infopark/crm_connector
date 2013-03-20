@@ -28,12 +28,12 @@ module Infopark; module Crm
 
     def test_updating_an_mailing_with_invalid_properties_should_fail
       assert_update_fails(@@mailing, :title => '')
-      assert_validation_failed(@@mailing, /Title muss ausgefüllt werden/)
+      assert_validation_failed(@@mailing, /Title can't be blank/)
     end
 
     def test_updating_an_mailing_with_invalid_properties_by_save_should_fail
       assert_update_by_save_fails(@@mailing, :title => '')
-      assert_validation_failed(@@mailing, /Title muss ausgefüllt werden/)
+      assert_validation_failed(@@mailing, /Title can't be blank/)
     end
   end
 
