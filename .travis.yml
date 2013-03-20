@@ -1,0 +1,26 @@
+language: ruby
+rvm:
+  - "1.8.7"
+  # - "1.9.2"
+  - "1.9.3"
+  - "2.0.0"
+  # - jruby-18mode # JRuby in 1.8 mode
+  # - jruby-19mode # JRuby in 1.9 mode
+  # - rbx-18mode
+  # - rbx-19mode
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec
+env:
+  global:
+    #infopark credentials
+    - secure: "Atxwks5Hb8MHXm2Im3FyH1w14zW/9JG7TX3jLBc3S4D9tL6Atyy3fDfgZDDf\nH8uBL7lQv9P+M9Te06abLCsLCQzqM/vxKEan6lzXdq5LTUoXPX1qq3wN28lD\nnYNyBGJA1UCzAWfSQpBEt/t0NcIFn6kGDIDN7+m4ECG4QGerI0M="
+    - secure: "ITNrbl5zoJZ+E+TxU0uvngnsaWt64zFuCKxldu7E3KBZJGX0um1jwh1qkefH\npSoZrVSgz5ksScko9VhDWDKe8hof/V4Zc0JysGYDaAmY4xC7wEpk8+C7wU+b\nRAvbSrCuYSxDzzb3CELnYh7Zvo3di02iKZtaF4vvWOaM1X2eQwQ="
+    - secure: "cM4Ty0XZ0WZOoUD26WDJ4P3is/hTyKYJHBqt7v/DIrYCvZRntHV0+bWa0lYV\njQCArJJdhFu4l3MDU+jNABdzWxWmT5+3ol+pBRVXXvrsHtKX0CCXzVB//Z9J\nhJdV4kIwvNKBWpK90G6Vqmwg57NpzK3cbSVqQi0fN2rk/NJXf1Q="
+    #apepper credentials
+    - secure: "EX8SzmnxM4SpUKYIaBvYxpnAN605PvS6fpjdCdRVNL7E9+pFzQCoVFAdnXcz\nqqTCwXhh4+sojHzJ/omOj/ePD9YsSogEFnTj1A68Y86q2Y+qUZ5eS78Glxeh\nM5yF0EA7/uS7ahYzKR8+VZf2m2r0Hv5Jo9a2guw/HxWGKO1Mk20="
+    - secure: "XHrYycpMiOuL3h6zeVFAeEyziTbqwxXqO/hDhH+rzuB0Emi66oK5ume0e/Ta\nHMKMmIkLDF9XVZHzAY0WkuViTcCS3lYPKzhf931VeXRWCnI0drTKAKAtCOGz\nbFxY2mUYWeaNEk7XeLEPyRNztFIW+LR6TQatNew98J1xqcoJh3w="
+    - secure: "UpUfcyEEMYQyfzgvzpdE3NZ+BkQ5K5LeA3kCeQv2uvwivNwmMQewFeTha2rm\nkqnnbCF8yKFFAmUcinc2cNXdtl0NbTduJEuC9Sn/Mv9H7o4zp9Std7c0prN5\nnsN/ufy7tD0Ck5Ue0KQG062Ugfkwy4Dwz+T8G9Xf65jFNMeynfw="
+  matrix:
+    - "activeresource=3.0"
+    - "activeresource=3.1"
+    - "activeresource=3.2"
