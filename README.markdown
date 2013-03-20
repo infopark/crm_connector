@@ -102,9 +102,14 @@ Run tests with all supported versions of Active Resource:
 
 # Changelog
 
+## Version 1.0.1 - 2013-03-20
+* Added continuous integration of travis-ci.org (see [travis-ci.org/infopark/crm_connector](https://travis-ci.org/infopark/crm_connector/))
+* Bugfix: Default attributes are inherited to subclasses (fixes [Issue #1](https://github.com/infopark/crm_connector/issues/1))
+* Bugfix: Infopark CRM Connector in combination with ActiveResource 3.0 used XML. Now it uses JSON.
+
 ## Version 1.0.0 - 2012-09-14
 * Enabled support for `event.custom_attributes`
-* Removed deprecated functions `EventContact.find_by` and `EventContact.find_by_event_id_and_contact_id`. Please user `EventContact.search` instead.
+* Removed deprecated functions `EventContact.find_by` and `EventContact.find_by_event_id_and_contact_id`. Please use `EventContact.search` instead.
 * Removed `configuration.debug`.
 * Renamed `Infopark::Crm::AuthenticationFailed` to `Infopark::Crm::Errors::AuthenticationFailed`.
 * Merged `Infopark::Crm::Core::Base` and `Infopark::Crm::Resource` into `Infopark::Crm::Core:Resource`.
@@ -125,7 +130,7 @@ Initial Release of Infopark CRM Connector
 
 ### Changes from OMC Connector to CRM Connector
 * Namespace changed from `OmcConector::` to `Infopark::Crm::`
-* Attribute names may have changed. For new attributes please refer to [Web Services API documentation](http://kb.infopark.de/crm-api).
+* Attribute names may have changed. For new attributes please refer to the [Web Services API documentation](http://kb.infopark.de/crm-api).
 * Works only with Infopark WebCRM.
 
 #### Changed configuration
@@ -200,6 +205,6 @@ Initial Release of Infopark CRM Connector
 
 # License
 
-Copyright (c) 2009 - 2012 Infopark AG (http://www.infopark.com)
+Copyright (c) 2009 - 2013 Infopark AG (http://www.infopark.com)
 
 This software can be used and modified under the LGPLv3. Please refer to http://www.gnu.org/licenses/lgpl-3.0.html for the license text.
