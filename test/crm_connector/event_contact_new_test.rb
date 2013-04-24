@@ -44,12 +44,11 @@ module Infopark; module Crm
     def test_returns_custom_details_when_saved
       c = Contact.create({:last_name => "X", :language => 'de', :gender => 'M', :want_geo_location => false})
       ec = EventContact.create(:contact_id => c.id, :event_id => @@event_id, :state => 'registered',
-        :custom_breakfast => 'extra bacon', :custom_lunch => 'no', :custom_doesnotexist => 'foo')
+        :custom_breakfast => 'extra bacon', :custom_lunch => 'no')
 
       ec_server = EventContact.find(ec.id)
       assert_equal 'extra bacon', ec_server.custom_breakfast
       assert_equal 'no', ec_server.custom_lunch
-      assert_nil ec_server.custom_doesnotexist
     end
 
   end

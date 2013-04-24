@@ -41,7 +41,7 @@ module Infopark; module Crm
     end
 
     def test_search_should_return_items_in_continuation
-      result = Event.search(:params => {:q => '', :limit => 10})
+      result = Contact.search(:params => {:q => '', :limit => 10})
       assert_equal result.take(14).size, 14
     end
 

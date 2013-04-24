@@ -29,6 +29,19 @@ module Infopark; module Crm
         EventContact.create(:contact_id => @@contact.id, :event_id => other_event.id, :state => 'registered')
         EventContact.create(:contact_id => other_contact.id, :event_id => @@event.id, :state => 'refused', :custom_breakfast => 'bacon')
 
+        begin
+          req = 14
+          if (size = EventContact.search(:params => {:q => '', :limit => 20}).size) < req
+            padding_event = Event.create(event_attr.merge(:title => 'Event'))
+            padding_contact = Contact.create(contact_attr.merge(:last_name => 'Padding'))
+            (req - size).times do 
+              EventContact.create(:contact_id => padding_contact.id, :event_id => padding_event.id, :state => 'registered')
+            end
+          end
+        rescue => e
+        end
+
+
         wait_for_indexer
       end
     end

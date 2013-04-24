@@ -67,7 +67,7 @@ module Infopark; module Crm
       assert_equal(['created'], @@activity.custom_type.states)
     end
 
-    def test_show_activtity_custom_type_object_with_no_custom_type_should_return_nil
+    def pending_test_show_activtity_custom_type_object_with_no_custom_type_should_return_nil
       @@activity.kind = nil
       @@activity.save
 

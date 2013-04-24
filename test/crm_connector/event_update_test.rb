@@ -10,7 +10,6 @@ module Infopark; module Crm
       CrmSetup.custom_types
       @@event_name = "Event_#{SecureRandom.hex(8)}"
       @@event = Event.create({
-          :name => @@event_name,
           :kind => 'base event',
           :title => 'Event title',
           :dtstart_at => Time.now,
