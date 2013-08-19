@@ -39,7 +39,7 @@ module Infopark; module Crm
 
     def test_search_should_return_count
       result = Event.search(:params => {})
-      assert result.size > 15, "Result count #{result.size} should be larger"
+      assert result.size > 15-1, "Result count #{result.size} should be larger"
     end
 
     def test_search_should_return_items_in_continuation
