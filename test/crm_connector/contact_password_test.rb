@@ -8,7 +8,8 @@ module Infopark; module Crm
   class ContactPasswordTest < ConnectorTestCase
 
     def setup
-      c = Contact.create({
+      # cannot re-use the same contact since multiple password requests fail
+      @contact = Contact.create({
           :login => "password" + SecureRandom.hex(16),
           :last_name => 'Passwort',
           :language => 'de',
@@ -16,23 +17,22 @@ module Infopark; module Crm
           :email => 'success@simulator.amazonses.com',
           :want_geo_location => false
           })
-      c.save!
-      @@contact = c
-      # cannot re-use the same contact since multiple password requests fail
     end
 
     def teardown
       WebMock.disable!
     end
 
+    # make sure to add password-request@infopark.net to the "Valid E-Mail Senders".
+    # only the support can edit this.
     def test_request_a_new_password_should_be_successful
-      assert_kind_of String, @@contact.password_request
+      assert_kind_of String, @contact.password_request
     end
 
     def test_request_a_new_password_asking_for_token_should_give_token
-      result = @@contact.password_request(:params => {:only_get_token => true})
+      result = @contact.password_request(:params => {:only_get_token => true})
       assert_kind_of String, result
-      assert_match /[0-9a-f]{30,200}/, result
+      assert_match(/[0-9a-f]{30,200}/, result)
     end
 
     def test_password_set_sends_password_in_post_body_only
@@ -63,15 +63,15 @@ module Infopark; module Crm
         with(:body => {
             'only_get_token' => true,
             }).to_return(:status => 200, :body => '{"password_request_token":"332211"}', :headers => {})
-      @@contact.password_request({:params => {:only_get_token => true}})
+      @contact.password_request({:params => {:only_get_token => true}})
     end
 
     def test_authenticate_with_correct_credencials_should_succeed
-      @@contact.password_set('correct_password')
+      @contact.password_set('correct_password')
 
-      result = Contact.authenticate(@@contact.login, 'correct_password')
+      result = Contact.authenticate(@contact.login, 'correct_password')
       assert_kind_of Contact, result
-      assert_match @@contact.id, result.id
+      assert_match @contact.id, result.id
     end
 
     def pending_test_set_a_new_password_should_fail_with_empty_password
@@ -88,7 +88,7 @@ module Infopark; module Crm
     end
 
     def test_set_a_new_password_should_succeed_with_given_login
-      result = @@contact.password_set('my_funky_password')
+      result = @contact.password_set('my_funky_password')
       assert_kind_of String, result
     end
 
