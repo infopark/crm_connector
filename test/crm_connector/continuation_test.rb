@@ -49,12 +49,8 @@ module Infopark; module Crm
 
     def test_access_without_auto_continuation
       result = Contact.all
-      # ruby 1.8.7 has no ActiveResource::Collection
-      if defined?(ActiveResource::Collection)
-        assert_kind_of ActiveResource::Collection, result.within_limit
-      else
-        assert_kind_of Array, result.within_limit
-      end
+      assert result.within_limit.class.ancestors.include?(Enumerable),
+        "should be an ActiveResource::Collection or an Array"
       assert_not_nil result.continuation_handle
       assert_kind_of Contact, result.within_limit.last
     end
