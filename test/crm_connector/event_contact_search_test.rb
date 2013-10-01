@@ -54,7 +54,7 @@ module Infopark; module Crm
     def test_search_should_return_items_in_continuation
       result = EventContact.search(:params => {:q => '', :limit => 10})
       size = result.take(14).size
-      assert 10 < size, "Result count #{size} should be larger"
+      assert 3 <= size, "Result count #{size} should be larger"
     end
 
     def test_search_for_contact_id
