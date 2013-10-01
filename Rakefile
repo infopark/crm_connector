@@ -1,8 +1,11 @@
 require 'appraisal'
 require 'rake/testtask'
-require 'yard'
 
-YARD::Rake::YardocTask.new
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new
+rescue LoadError
+end
 
 Rake::TestTask.new do |t|
   t.libs << "test"

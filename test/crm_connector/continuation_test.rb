@@ -49,7 +49,8 @@ module Infopark; module Crm
 
     def test_access_without_auto_continuation
       result = Contact.all
-      assert_kind_of Array, result.within_limit
+      assert result.within_limit.class.ancestors.include?(Enumerable),
+        "should be an ActiveResource::Collection or an Array"
       assert_not_nil result.continuation_handle
       assert_kind_of Contact, result.within_limit.last
     end

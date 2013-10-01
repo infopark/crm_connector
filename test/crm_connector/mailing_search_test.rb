@@ -61,7 +61,7 @@ module Infopark; module Crm
 
     def test_search_should_return_items_in_continuation
       result = Mailing.search(:params => {:q => '', :limit => 10})
-      assert_equal result.take(14).size, 14
+      assert_equal 14, result.take(14).size
     end
 
     def test_search_should_return_count
@@ -72,34 +72,25 @@ module Infopark; module Crm
     def test_sort_by_updated_at_works
       result = Mailing.search(:params =>
           {:sort_by => 'updated_at', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{size} should be larger"
-
-      correct = result.each_cons(2).reduce(true) do |correct, (first, second)|
-        correct && (DateTime.parse(first.updated_at.to_s) <= DateTime.parse(second.updated_at.to_s))
-      end
-      assert_true correct, 'not sorted correctly'
+      assert 15 <= result.size, "Result count #{result.size} should be larger"
+      timestamps = result.map(&:updated_at)
+      assert_equal timestamps.sort, timestamps, 'not sorted correctly'
     end
 
     def test_sort_by_updated_at_asc_works
       result = Mailing.search(:params =>
           {:sort_by => 'updated_at', :sort_order => 'asc', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{size} should be larger"
-
-      correct = result.each_cons(2).reduce(true) do |correct, (first, second)|
-        correct && (DateTime.parse(first.updated_at.to_s) <= DateTime.parse(second.updated_at.to_s))
-      end
-      assert_true correct, 'not sorted correctly'
+      assert 15 <= result.size, "Result count #{result.size} should be larger"
+      timestamps = result.map(&:updated_at)
+      assert_equal timestamps.sort, timestamps, 'not sorted correctly'
     end
 
     def test_sort_by_updated_at_desc_works
       result = Mailing.search(:params =>
           {:sort_by => 'updated_at', :sort_order => 'desc', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{size} should be larger"
-
-      correct = result.each_cons(2).reduce(true) do |correct, (first, second)|
-        correct && (DateTime.parse(first.updated_at.to_s) >= DateTime.parse(second.updated_at.to_s))
-      end
-      assert_true correct, 'not sorted correctly'
+      assert 15 <= result.size, "Result count #{result.size} should be larger"
+      timestamps = result.map(&:updated_at)
+      assert_equal timestamps.sort.reverse, timestamps, 'not sorted correctly'
     end
 
   end
