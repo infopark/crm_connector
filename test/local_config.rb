@@ -10,11 +10,21 @@ def either_file(*files)
 end
 
 def local_config
-  local_config_file = either_file(
-    Pathname(__FILE__).expand_path + "../config.json",
-    Pathname(ENV['HOME']) + '.config/infopark/crm_connector.json'
-  )
-  config = HelpfulConfiguration.new(JSON.parse(File.read(local_config_file)), local_config_file)
+  config =
+    if ENV['CRM_LOGIN'].present?
+      HelpfulConfiguration.new({
+        'url' => ENV['CRM_API_URL'],
+        'login' => ENV['CRM_LOGIN'],
+        'api_key' => ENV['CRM_API_KEY'],
+      }.reject {|k,v| v.blank?}, "ENV")
+    else
+      local_config_file = either_file(
+        Pathname(__FILE__).expand_path + "../config.json",
+        Pathname(ENV['HOME']) + '.config/infopark/crm_connector.json'
+      )
+      HelpfulConfiguration.new(JSON.parse(File.read(local_config_file)), local_config_file)
+    end
+
   config.explain(
     "url",
     "the url of the webcrm tenant"

@@ -49,34 +49,25 @@ module Infopark; module Crm
 
     def test_sort_by_updated_at_works
       result = Event.search(:params => {:sort_by => 'updated_at', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{size} should be larger"
-
-      correct = result.each_cons(2).reduce(true) do |correct, (first, second)|
-        correct && (DateTime.parse(first.updated_at.to_s) <= DateTime.parse(second.updated_at.to_s))
-      end
-      assert_true correct, 'not sorted correctly'
+      assert 15 <= result.size, "Result count #{result.size} should be larger"
+      timestamps = result.map(&:updated_at)
+      assert_equal timestamps.sort, timestamps, 'not sorted correctly'
     end
 
     def test_sort_by_updated_at_asc_works
       result = Event.search(:params =>
           {:sort_by => 'updated_at', :sort_oder => 'asc', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{size} should be larger"
-
-      correct = result.each_cons(2).reduce(true) do |correct, (first, second)|
-        correct && (DateTime.parse(first.updated_at.to_s) <= DateTime.parse(second.updated_at.to_s))
-      end
-      assert_true correct, 'not sorted correctly'
+      assert 15 <= result.size, "Result count #{result.size} should be larger"
+      timestamps = result.map(&:updated_at)
+      assert_equal timestamps.sort, timestamps, 'not sorted correctly'
     end
 
     def test_sort_by_updated_at_desc_works
       result = Event.search(:params => {
         :sort_by => 'updated_at', :sort_order => 'desc', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{size} should be larger"
-
-      correct = result.each_cons(2).reduce(true) do |correct, (first, second)|
-        correct && (DateTime.parse(first.updated_at.to_s) >= DateTime.parse(second.updated_at.to_s))
-      end
-      assert_true correct, 'not sorted correctly'
+      assert 15 <= result.size, "Result count #{result.size} should be larger"
+      timestamps = result.map(&:updated_at)
+      assert_equal timestamps.sort.reverse, timestamps, 'not sorted correctly'
     end
   end
 

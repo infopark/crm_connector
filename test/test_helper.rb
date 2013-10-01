@@ -9,9 +9,9 @@ require File.dirname(__FILE__) + '/connector_test_helper'
 require File.dirname(__FILE__) + '/local_config'
 
 Infopark::Crm.configure do |config|
-  config.login = ENV['CRM_LOGIN'] || local_config['login']
-  config.api_key = ENV['CRM_API_KEY'] || local_config['api_key']
-  config.url = ENV['CRM_API_URL'] || local_config['url']
+  config.login = local_config['login']
+  config.api_key = local_config['api_key']
+  config.url = local_config['url']
 end
 
 module CrmSetup
