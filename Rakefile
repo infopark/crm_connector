@@ -43,6 +43,11 @@ task :cleanup do
       case item
       when Role
         next if item.name == "superuser"
+        begin
+          next if Time.parse(item.description.to_s) > t
+        rescue ArgumentError
+          # description contains no timestamp yet
+        end
       when Contact
         next if item.login == "root"
         next if Time.parse(item.updated_at) > t

@@ -10,10 +10,11 @@ module Infopark; module Crm
       # This is needed to not get AWS::DynamoDB::Errors::ConditionalCheckFailedException
       sleep 0.5
 
-      role = Role.create(:name => "ShowRole#{SecureRandom.hex(8)}", :description => 'Hello World')
+      role = Role.create(:name => "ShowRole#{SecureRandom.hex(8)}",
+          :description => Time.now.utc.xmlschema + ' Hello World')
 
       role = assert_show_succeeds(Role, role.id)
-      assert_property(role, :description, 'Hello World')
+      assert_match(/Hello World/, role.description)
     end
 
     def test_find_role_with_nonexisting_id_should_fail
