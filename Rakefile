@@ -54,9 +54,11 @@ task :cleanup do
       else
         next if Time.parse(item.updated_at) > t
       end
-      item.destroy
+      $stdout.write "."
+      $stdout.flush
       i += 1
+      item.destroy
     end
-    puts "-> deleted #{i} items"
+    puts "\n-> deleted #{i} items"
   end
 end
