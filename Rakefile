@@ -36,7 +36,7 @@ desc "Once in a while cleanup the CRM database content"
 task :cleanup do
   require "./script/connector_initializer"
   t = 1.hour.ago.utc
-  [Activity, EventContact, Event, Mailing, Contact, Account, Role].each do |klass|
+  [Activity, Account, Contact, Event, EventContact, Mailing, Role].each do |klass|
     puts "Cleaning up #{klass}"
     i = 0
     klass.all(:params => {:limit => 1000}).each do |item|
