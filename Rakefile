@@ -39,7 +39,7 @@ task :cleanup do
   [Activity, EventContact, Event, Mailing, Contact, Account, Role].each do |klass|
     puts "Cleaning up #{klass}"
     i = 0
-    klass.all(params: {limit: 1000}).each do |item|
+    klass.all(:params => {:limit => 1000}).each do |item|
       case item
       when Role
         next if item.name == "superuser"
