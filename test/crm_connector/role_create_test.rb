@@ -13,8 +13,7 @@ module Infopark; module Crm
     end
 
     def test_create_role_should_be_successful
-      assert_create_succeeds(Role, :name => "Role#{SecureRandom.hex(11)}",
-          :description => Time.now.utc.xmlschema)
+      assert_create_succeeds(Role, :name => "Role#{SecureRandom.hex(4)}_#{iso_time}")
     end
 
     def test_create_role_with_insufficient_properties_should_fail
@@ -22,8 +21,7 @@ module Infopark; module Crm
     end
 
     def test_create_role_by_save_should_be_successful
-      assert_create_by_save_succeeds(Role, :name => "OtherRole#{SecureRandom.hex(11)}",
-          :description => Time.now.utc.xmlschema)
+      assert_create_by_save_succeeds(Role, :name => "Other#{SecureRandom.hex(4)}_#{iso_time}")
     end
 
     def test_create_role_by_save_with_insufficient_properties_should_fail

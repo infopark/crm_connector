@@ -36,17 +36,44 @@ desc "Once in a while cleanup the CRM database content"
 task :cleanup do
   require "./script/connector_initializer"
   t = 1.hour.ago.utc
-  [Activity, Account, Contact, Event, EventContact, Mailing, Role].each do |klass|
+  klasses = [
+    Activity,
+    Account,
+    Contact,
+    CustomType,
+    Event,
+    EventContact,
+    Mailing,
+    Role,
+  ]
+  klasses.each do |klass|
     puts "Cleaning up #{klass}"
     i = 0
     klass.all(:params => {:limit => 1000}).each do |item|
       case item
+      when CustomType
+        next if [
+          "account",
+          "base event",
+          "contact",
+          "note",
+          "support case",
+        ].include?(item.name)
+        if item.name =~ /_(\d{14}Z)$/
+          begin
+            next if Time.parse($1) > t
+          rescue ArgumentError
+            # name contains no timestamp yet
+          end
+        end
       when Role
         next if item.name == "superuser"
-        begin
-          next if Time.parse(item.description.to_s) > t
-        rescue ArgumentError
-          # description contains no timestamp yet
+        if item.name =~ /_(\d{14}Z)$/
+          begin
+            next if Time.parse($1) > t
+          rescue ArgumentError
+            # name contains no timestamp yet
+          end
         end
       when Contact
         next if item.login == "root"

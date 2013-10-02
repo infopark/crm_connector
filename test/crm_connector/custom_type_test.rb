@@ -11,24 +11,25 @@ module Infopark; module Crm
       # This is needed to not get AWS::DynamoDB::Errors::ConditionalCheckFailedException
       sleep 0.5
 
-      CustomType.create(:name => 'test_ct_a', :kind => 'Activity') unless CustomType.exists? 'test_ct_a'
-      t = CustomType.find 'test_ct_a'
+      @@name_a = "ct_a_#{iso_time}"
+      CustomType.create(:name => @@name_a, :kind => 'Activity')
+      t = CustomType.find(@@name_a)
       t.custom_attributes = [CustomType::CustomAttribute.new(:name => 'custom_test1', :type => 'string')]
       t.save!
       @@custom_type = t
-      CustomType.create(:name => 'test_ct_b', :kind => 'Activity') unless CustomType.exists? 'test_ct_b'
+      @@name_b = "ct_b_#{iso_time}"
+      CustomType.create(:name => @@name_b, :kind => 'Activity')
     end
 
 
     def test_find_all_returns_all_custom_types
       names = CustomType.find(:all).map(&:name)
-      names.select!{|x| x =~ /test_ct/}
-      assert_equal ['test_ct_a', 'test_ct_b'], names
+      assert [@@name_a, @@name_b] & names == [@@name_a, @@name_b]
     end
 
     def test_find_by_id_with_valid_id_should_return_an_instance
-      assert_kind_of CustomType, ik = CustomType.find('test_ct_a')
-      assert_equal 'test_ct_a', ik.name
+      assert_kind_of CustomType, ik = CustomType.find(@@name_a)
+      assert_equal @@name_a, ik.name
     end
 
     # @webcrm_todo currently throws (which is correct for an active resource) - change requirements?
