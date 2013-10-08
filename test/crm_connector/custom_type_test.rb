@@ -19,6 +19,7 @@ module Infopark; module Crm
       @@custom_type = t
       @@name_b = "ct_b_#{iso_time}"
       CustomType.create(:name => @@name_b, :kind => 'Activity')
+      wait_for_indexer
     end
 
 
