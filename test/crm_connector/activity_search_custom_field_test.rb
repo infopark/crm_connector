@@ -8,7 +8,7 @@ module Infopark; module Crm
     class << self
       def startup
         ca = {:name => 'activity_test', :type => 'string'}
-        t = CustomType.create(:name => SecureRandom.hex(10),
+        t = CustomType.create(:name => "#{SecureRandom.hex(2)}_#{iso_time}",
             :kind => 'Activity', :custom_attributes => [ca])
 
         @@unique_value = "Master#{SecureRandom.hex(8)}"

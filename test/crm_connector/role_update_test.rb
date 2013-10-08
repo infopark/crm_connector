@@ -11,7 +11,8 @@ module Infopark; module Crm
       # This is needed to not get AWS::DynamoDB::Errors::ConditionalCheckFailedException
       sleep 0.5
 
-      @@role = Role.create(:name => "Update#{SecureRandom.hex(8)}", :description => 'Hello World')
+      @@role = Role.create(:name => "Update#{SecureRandom.hex(4)}_#{iso_time}",
+          :description => 'Hello World')
     end
 
     def test_updating_a_role_should_be_successful
