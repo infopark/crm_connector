@@ -103,6 +103,7 @@ Run tests with all supported versions of Active Resource:
 # Changelog
 
 ## Next release
+* Remove support for ActiveResource 3.0.
 * Added `Attachment.generate_upload_permission`, `Attachment.generate_download_url` and the activity comment property `attachments`. See [API documentation](https://dev.infopark.net/26635f6d056215c9/attachments)
 
 ## Version 1.0.1 - 2013-03-20

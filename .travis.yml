@@ -21,6 +21,5 @@ env:
     - secure: "XHrYycpMiOuL3h6zeVFAeEyziTbqwxXqO/hDhH+rzuB0Emi66oK5ume0e/Ta\nHMKMmIkLDF9XVZHzAY0WkuViTcCS3lYPKzhf931VeXRWCnI0drTKAKAtCOGz\nbFxY2mUYWeaNEk7XeLEPyRNztFIW+LR6TQatNew98J1xqcoJh3w="
     - secure: "UpUfcyEEMYQyfzgvzpdE3NZ+BkQ5K5LeA3kCeQv2uvwivNwmMQewFeTha2rm\nkqnnbCF8yKFFAmUcinc2cNXdtl0NbTduJEuC9Sn/Mv9H7o4zp9Std7c0prN5\nnsN/ufy7tD0Ck5Ue0KQG062Ugfkwy4Dwz+T8G9Xf65jFNMeynfw="
   matrix:
-    - "activeresource=3.0"
     - "activeresource=3.1"
     - "activeresource=3.2"
