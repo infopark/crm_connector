@@ -20,10 +20,11 @@ module CrmSetup
   def self.custom_types
     unless @custom_types
       @custom_types = true
-      Infopark::Crm::CustomType.create(:kind => 'Activity', :name => "support case", :states => 'created') rescue nil
-      Infopark::Crm::CustomType.create(:kind => 'Event', :name => 'base event', :states => []) rescue nil
+      Infopark::Crm::CustomType.create(:kind => 'Activity', :name => "support case",
+          :states => 'created') rescue nil
       Infopark::Crm::CustomType.create(:kind => 'Activity', :name => 'note') rescue nil
-      Infopark::Crm::CustomType.create(:kind => 'Event', :name => 'base event', :states => []) rescue nil
+      Infopark::Crm::CustomType.create(:kind => 'Event', :name => 'base event',
+          :states => []) rescue nil
     end
   end
 end
@@ -32,3 +33,7 @@ class ConnectorTestCase
 end
 
 Infopark::Crm::Core::Resource.deprecation_warnings = false
+
+def iso_time
+  Time.now.utc.strftime("%Y%m%d%H%M%SZ")
+end

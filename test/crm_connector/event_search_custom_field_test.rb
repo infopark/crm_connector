@@ -8,11 +8,11 @@ module Infopark; module Crm
     class << self
       def startup
         ca = {:name => 'event_test', :type => 'string'}
-        t = CustomType.create(:name => SecureRandom.hex(10),
+        t = CustomType.create(:name => "#{SecureRandom.hex(2)}_#{iso_time}",
             :kind => 'Event', :custom_attributes => [ca])
 
         @@unique_value = "Master#{SecureRandom.hex(8)}"
-        e = Event.create(:kind => t.name, :dtstart_at => Time.now, :dtend_at => Time.now,
+        Event.create(:kind => t.name, :dtstart_at => Time.now, :dtend_at => Time.now,
             :title => 'Custom', :custom_event_test => @@unique_value)
         Event.create(:kind => t.name, :dtstart_at => Time.now, :dtend_at => Time.now,
             :title => @@unique_value, :custom_event_test => 'not master')
