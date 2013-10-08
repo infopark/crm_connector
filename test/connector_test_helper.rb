@@ -111,7 +111,7 @@ module ConnectorTestHelper
 
   module ClassMethods
     def wait_for_indexer
-      sleep 2.5
+      sleep 5
     end
   end
 
