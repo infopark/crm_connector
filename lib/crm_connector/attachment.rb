@@ -3,15 +3,19 @@ module Infopark
 
     class Attachment < Core::Resource
 
+      class Permission < Struct.new(:url, :fields, :upload_id)
+      end
+
       ##
       # Generates a temporary Amazon S3 URL for uploading a file to S3.
-      # @return [Hash]
+      # @return [Permission]
       # @webcrm_rest_url <code>GET /api/attachments/upload_permission</code>
       # @see https://dev.infopark.net/26635f6d056215c9/attachments
       # @example
       #   permission = Infopark::Crm::Attachment.upload_permission
       def self.upload_permission
-        get(:upload_permission)
+        perm = get(:upload_permission)
+        Permission.new(perm["url"], perm["fields"], perm["upload_id"])
       end
 
       ##
