@@ -18,7 +18,10 @@ module Infopark; module Crm
       assert_kind_of Hash, perm.fields
       assert_kind_of String, perm.upload_id
 
-      response = RestClient.post(perm.url, perm.fields.merge(:file => File.new('LICENSE')))
+      params = ActiveSupport::OrderedHash.new
+      params.merge!(perm.fields)
+      params.merge!(:file => File.new('LICENSE'))
+      response = RestClient.post(perm.url, params)
       assert_equal 204, response.code
 
       activity = Activity.create(:kind => 'support case',
