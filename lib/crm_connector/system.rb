@@ -10,7 +10,6 @@ module Infopark; module Crm
     # @webcrm_rest_url <code>GET /api/templates</code>
     def self.templates
       response = base.connection.get(path, base.headers)
-      return response['templates'] if response.kind_of? Hash # ActiveResource 3.0
       base.format.decode(response.body)
     end
 

@@ -19,12 +19,12 @@ module Infopark; module Crm
       Infopark::Crm.configure {|c| c.locale = 'de'}
 
       assert_false(activity.save)
-      assert_equal(activity.errors.to_hash, {:state=>["ist kein gültiger Wert"]})
+      assert_equal({:state=>["ist kein gültiger Wert"]}, activity.errors.to_hash)
     end
 
     def test_contact_example
       contact = Infopark::Crm::Contact.search(:params => {:login => 'root'}).first
-      assert_equal(contact.login, 'root')
+      assert_equal('root', contact.login)
     end
   end
 
