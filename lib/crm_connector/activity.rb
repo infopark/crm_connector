@@ -24,6 +24,7 @@ module Infopark; module Crm
       :appointment_dtstart_at => :time,
       :appointment_location => :string,
       :comment_notes => :string,
+      :comment_attachments => :array,
       :comment_published => :boolean,
       :contact_id => :string,
       :email_cc => :string,
@@ -59,5 +60,16 @@ module Infopark; module Crm
       Infopark::Crm::CustomType.find(kind) if kind
     end
 
+
+    class Comment < Core::Resource
+      self.schema = {
+        :contact_id => :string,
+        :notes => :string,
+        :attachments => :array,
+        :published => :boolean,
+        :updated_at => :time,
+        :updated_by => :string,
+      }
+    end
   end
 end; end
