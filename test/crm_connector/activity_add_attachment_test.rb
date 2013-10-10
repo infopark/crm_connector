@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'backports'
+require 'rest-client'
 require_relative '../test_helper'
 
 module Infopark; module Crm
@@ -17,9 +18,8 @@ module Infopark; module Crm
       assert_kind_of Hash, perm.fields
       assert_kind_of String, perm.upload_id
 
-      cmd = curl_cmd(perm.url, perm.fields, "LICENSE")
-      http_code = %x(#{cmd})
-      assert_equal "204", http_code
+      response = RestClient.post(perm.url, perm.fields.merge(:file => File.new('LICENSE')))
+      assert_equal 204, response.code
 
       activity = Activity.create(:kind => 'support case',
           :state=>'created', :title => 'attachment test')
@@ -33,18 +33,6 @@ module Infopark; module Crm
 
       download_url = Attachment.download_url(attachment_id, activity.id)
       assert_match(/amazonaws/, download_url)
-    end
-
-    private
-
-    def curl_cmd(url, fields, file)
-      cmd = %w(curl -s -w "%{http_code}")
-      fields.each do |name, value|
-        cmd << "-F" << '"' + [name, value].join("=") + '"'
-      end
-      cmd << "-F" << "file=@#{file}"
-      cmd << url
-      cmd.join(" ")
     end
 
   end
