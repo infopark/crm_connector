@@ -3,17 +3,28 @@ module Infopark
 
     class Attachment < Core::Resource
 
-      def self.generate_upload_permission
+      ##
+      # Generates a temporary Amazon S3 URL for uploading a file to S3.
+      # @return [Hash]
+      # @webcrm_rest_url <code>GET /api/attachments/upload_permission</code>
+      # @see https://dev.infopark.net/26635f6d056215c9/attachments
+      # @example
+      #   permission = Infopark::Crm::Attachment.upload_permission
+      def self.upload_permission
         get(:upload_permission)
       end
 
-      def self.generate_download_url(attachment_id, activity_id)
-        url = get(:download_url, :attachment_id => attachment_id, :activity_id => activity_id)
-        # workaround different behavior of ActiveResource 3.0
-        if url.is_a?(Hash) && url.has_key?("url")
-          url = url["url"]
-        end
-        url
+      ##
+      # Generates a temporary download URL for the given attachment.
+      # @param attachment_id [String] An attachment ID taken from the attachments field inside the comments section of an activity.
+      # @param activity_id [String] The activity ID the attachment belongs to
+      # @return [String]
+      # @webcrm_rest_url <code>GET /api/attachments/download_url</code>
+      # @see https://dev.infopark.net/26635f6d056215c9/attachments
+      # @example
+      #   url = Infopark::Crm::Attachment.download_url("c972c011b52ba671b68b16db961b82e7", "ff30a81adaaae7bd5a7066c350530c41")
+      def self.download_url(attachment_id, activity_id)
+        get(:download_url, :attachment_id => attachment_id, :activity_id => activity_id)
       end
 
     end

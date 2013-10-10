@@ -61,7 +61,6 @@ module Infopark; module Crm
       begin
         response = post(:authenticate, {}, format.encode({:login => login, :password => password}))
         result = format.decode(response.body)
-        return find(result['id']) if result.kind_of? Hash # ActiveResource 3.0
         find(result)
       rescue ActiveResource::ResourceInvalid
         raise Errors::AuthenticationFailed
@@ -76,9 +75,7 @@ module Infopark; module Crm
     # @webcrm_rest_url <code>POST /api/contacts/password_set</code>
     def self.password_set(password, token)
       response = post(:password_set, {}, format.encode({:password => password, :token => token}))
-      result = format.decode(response.body)
-      return result['message'] if result.kind_of? Hash # ActiveResource 3.0
-      result
+      format.decode(response.body)
     end
 
     ##
@@ -98,9 +95,7 @@ module Infopark; module Crm
     def password_request(options = {})
       params = options[:params] || {}
       response = post(:password_request, {}, self.class.format.encode(params))
-      result = self.class.format.decode(response.body)
-      return result.values.first if result.kind_of? Hash # ActiveResource 3.0
-      result
+      self.class.format.decode(response.body)
     end
 
     # Returns the live_server_groups of this contact as defined by +Configuration.live_server_groups_callback+

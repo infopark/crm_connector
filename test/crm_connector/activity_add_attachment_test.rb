@@ -11,7 +11,7 @@ module Infopark; module Crm
     end
 
     def test_walk_through_activity_add_attachment_workflow
-      perm = Attachment.generate_upload_permission
+      perm = Attachment.upload_permission
       assert_equal %w(url fields upload_id).sort, perm.keys.sort
 
       cmd = curl_cmd(perm["url"], perm["fields"], "LICENSE")
@@ -28,7 +28,7 @@ module Infopark; module Crm
       attachment_id = activity.comments.last.attachments.first
       assert_match(/LICENSE\.txt$/, attachment_id)
 
-      download_url = Attachment.generate_download_url(attachment_id, activity.id)
+      download_url = Attachment.download_url(attachment_id, activity.id)
       assert_match(/amazonaws/, download_url)
     end
 
