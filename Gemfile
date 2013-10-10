@@ -5,6 +5,7 @@ gemspec
 
 # Dependencies for test environment
 gem "rake"
+gem "rest-client"
 gem "test-unit"
 gem "webmock"
 gem "pry"
