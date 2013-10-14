@@ -20,6 +20,10 @@ env:
     - secure: "EX8SzmnxM4SpUKYIaBvYxpnAN605PvS6fpjdCdRVNL7E9+pFzQCoVFAdnXcz\nqqTCwXhh4+sojHzJ/omOj/ePD9YsSogEFnTj1A68Y86q2Y+qUZ5eS78Glxeh\nM5yF0EA7/uS7ahYzKR8+VZf2m2r0Hv5Jo9a2guw/HxWGKO1Mk20="
     - secure: "XHrYycpMiOuL3h6zeVFAeEyziTbqwxXqO/hDhH+rzuB0Emi66oK5ume0e/Ta\nHMKMmIkLDF9XVZHzAY0WkuViTcCS3lYPKzhf931VeXRWCnI0drTKAKAtCOGz\nbFxY2mUYWeaNEk7XeLEPyRNztFIW+LR6TQatNew98J1xqcoJh3w="
     - secure: "UpUfcyEEMYQyfzgvzpdE3NZ+BkQ5K5LeA3kCeQv2uvwivNwmMQewFeTha2rm\nkqnnbCF8yKFFAmUcinc2cNXdtl0NbTduJEuC9Sn/Mv9H7o4zp9Std7c0prN5\nnsN/ufy7tD0Ck5Ue0KQG062Ugfkwy4Dwz+T8G9Xf65jFNMeynfw="
+    #tritz credentials
+    - secure: "Nr8fBGxnqxQ335nbiT7iUBKNEfHr3Yy3SqiEfd6nmkOAOKG9nZfW2nSLKP4NjFQTWBXuaup1EL15gFLl6e5RBM8z/0EAt2zJFbRDDHAcutrGgF162rWZqsgKPHMOQNfFcZkqn8jSMlsRpzX31Q7gQP2wSe2XLo9qXNRl33J3Gok="
+    - secure: "Kn7vKA88U36rQHOtlSv8Y1E1XWOfxqUqRYIrS0cfiWx+5Ql4BcQzPe26aQNzABhkIQf9rlJvVAZaZuUt8Sz6s5DvlBLJJ4vLDz/uWPl35iP5jZmxMawB3Ku66W/UXsMT8LYu0NHg1Qg+gw/U1AlmzacarXBuer725c6GcxJ6UX4="
+    - secure: "d07XhvNaTZNUuxu4lrr3VjecYL60qTrnljASRRaky6DB6KPgEmLYl7/0LpLqQja1I2MhZYI5yfeYI4SJajB1ZVwj8qh5avWaskpH+BqKuGvzJgfuNHX9vNa3JFfgkhj/wDB96FzyfE+YIge0ReCOBXKFLhH9QI4kuY/6QMoyWrE="
   matrix:
     - "activeresource=3.1"
     - "activeresource=3.2"
