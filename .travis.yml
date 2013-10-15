@@ -1,29 +1,65 @@
 language: ruby
 rvm:
   - "1.8.7"
-  # - "1.9.2"
   - "1.9.3"
   - "2.0.0"
-  # - jruby-18mode # JRuby in 1.8 mode
-  # - jruby-19mode # JRuby in 1.9 mode
-  # - rbx-18mode
-  # - rbx-19mode
-# uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
 env:
   global:
+    # Define and encrypt the following credentials.
+    # These are the credentials for a couple of test CRM tenants, one for each Travis job.
+    # CRM_1_API_URL=
+    # CRM_1_LOGIN=root
+    # CRM_1_API_KEY=
+    # CRM_2_API_URL=
+    # CRM_2_LOGIN=root
+    # CRM_2_API_KEY=
+    # CRM_3_API_URL=
+    # CRM_3_LOGIN=root
+    # CRM_3_API_KEY=
+    # CRM_4_API_URL=
+    # CRM_4_LOGIN=root
+    # CRM_4_API_KEY=
+    # CRM_5_API_URL=
+    # CRM_5_LOGIN=root
+    # CRM_5_API_KEY=
+    # CRM_6_API_URL=
+    # CRM_6_LOGIN=root
+    # CRM_6_API_KEY=
+
     #infopark credentials
     - secure: "Atxwks5Hb8MHXm2Im3FyH1w14zW/9JG7TX3jLBc3S4D9tL6Atyy3fDfgZDDf\nH8uBL7lQv9P+M9Te06abLCsLCQzqM/vxKEan6lzXdq5LTUoXPX1qq3wN28lD\nnYNyBGJA1UCzAWfSQpBEt/t0NcIFn6kGDIDN7+m4ECG4QGerI0M="
     - secure: "ITNrbl5zoJZ+E+TxU0uvngnsaWt64zFuCKxldu7E3KBZJGX0um1jwh1qkefH\npSoZrVSgz5ksScko9VhDWDKe8hof/V4Zc0JysGYDaAmY4xC7wEpk8+C7wU+b\nRAvbSrCuYSxDzzb3CELnYh7Zvo3di02iKZtaF4vvWOaM1X2eQwQ="
     - secure: "cM4Ty0XZ0WZOoUD26WDJ4P3is/hTyKYJHBqt7v/DIrYCvZRntHV0+bWa0lYV\njQCArJJdhFu4l3MDU+jNABdzWxWmT5+3ol+pBRVXXvrsHtKX0CCXzVB//Z9J\nhJdV4kIwvNKBWpK90G6Vqmwg57NpzK3cbSVqQi0fN2rk/NJXf1Q="
+
     #apepper credentials
     - secure: "EX8SzmnxM4SpUKYIaBvYxpnAN605PvS6fpjdCdRVNL7E9+pFzQCoVFAdnXcz\nqqTCwXhh4+sojHzJ/omOj/ePD9YsSogEFnTj1A68Y86q2Y+qUZ5eS78Glxeh\nM5yF0EA7/uS7ahYzKR8+VZf2m2r0Hv5Jo9a2guw/HxWGKO1Mk20="
     - secure: "XHrYycpMiOuL3h6zeVFAeEyziTbqwxXqO/hDhH+rzuB0Emi66oK5ume0e/Ta\nHMKMmIkLDF9XVZHzAY0WkuViTcCS3lYPKzhf931VeXRWCnI0drTKAKAtCOGz\nbFxY2mUYWeaNEk7XeLEPyRNztFIW+LR6TQatNew98J1xqcoJh3w="
     - secure: "UpUfcyEEMYQyfzgvzpdE3NZ+BkQ5K5LeA3kCeQv2uvwivNwmMQewFeTha2rm\nkqnnbCF8yKFFAmUcinc2cNXdtl0NbTduJEuC9Sn/Mv9H7o4zp9Std7c0prN5\nnsN/ufy7tD0Ck5Ue0KQG062Ugfkwy4Dwz+T8G9Xf65jFNMeynfw="
-    #tritz credentials
-    - secure: "Nr8fBGxnqxQ335nbiT7iUBKNEfHr3Yy3SqiEfd6nmkOAOKG9nZfW2nSLKP4NjFQTWBXuaup1EL15gFLl6e5RBM8z/0EAt2zJFbRDDHAcutrGgF162rWZqsgKPHMOQNfFcZkqn8jSMlsRpzX31Q7gQP2wSe2XLo9qXNRl33J3Gok="
-    - secure: "Kn7vKA88U36rQHOtlSv8Y1E1XWOfxqUqRYIrS0cfiWx+5Ql4BcQzPe26aQNzABhkIQf9rlJvVAZaZuUt8Sz6s5DvlBLJJ4vLDz/uWPl35iP5jZmxMawB3Ku66W/UXsMT8LYu0NHg1Qg+gw/U1AlmzacarXBuer725c6GcxJ6UX4="
-    - secure: "d07XhvNaTZNUuxu4lrr3VjecYL60qTrnljASRRaky6DB6KPgEmLYl7/0LpLqQja1I2MhZYI5yfeYI4SJajB1ZVwj8qh5avWaskpH+BqKuGvzJgfuNHX9vNa3JFfgkhj/wDB96FzyfE+YIge0ReCOBXKFLhH9QI4kuY/6QMoyWrE="
+
+    # tritz' credentials
+    # cat envvars|travis encrypt -r thomasritz/crm_connector -s
+    - secure: "KodULohgbuOzAzLF7lHLk2EZrFYBnKVzjFUX1xS6NR7R2w6rg/e/vEdHdU0/4lwz4jbdl3/u3V8yVn06zzvemSeg71dmY+amha/T+a1jr2RH9KA4weXYHbh3F8KpzLnzeLuFw48xxvQHELVPwW4AbGOVIKPK7VBiSbfSjF/PfCc="
+    - secure: "IxqXuosF9x4s987WHNPOyvXgyj+btxmWdnGrZI57c1L0qqWFhh9Zga837Ik7xgJwYC5gSVq+K7SO908RzIIuf1mJOCYfQNGpT3smQGYumdDTvZ9ZKUQKsJz6mLPiiY1BZc2/kpb9l7fx68+aDPN/WGj57wxed3jhEhO57jCHFlM="
+    - secure: "OfEo6jtOFgpqUmVBdMOpsJr3wfTrlbBYdz/mFNW5taP4vf+r80mTWByhn3Spbim5nRgI/2Uh/ybGAGypZ9a68xp7BUCGY5sv1TjGj1WcTArfV7dMCIVDSKI4f551Rf4Odo3Pzqkz6k1xKjzQ/Ktkyicpmvw1WCDAGhrwlS1aiOI="
+    - secure: "VT8IdtVZvvUGRx5KUFLmxVxv3wS3cc0Xl+r9VJq0nIM+lWXVCVF9jWIR1bI9yyBcpyMdVCICI/kFHUAeIGRXmIO2sXfyooLVOdAje+unNZE2e0tSJygLwclRhFAFDG5sxd0vDfFQH5V18aCyy2Ej0NELQswOyqKGq2vr+GyT/jk="
+    - secure: "KUmSfNdsXIxWrOvwau9fYyp9VDNKt6f8jUb/BjfL+6wNitBl0JcoMDr4GEk79YuOUtTu945s5CYueBaSQIDYZQf+pqEMqZ4AKkU7P8pljP6x5h9+gyooiAjndCFdoesWr99HwchijijADMALgoxxSA7zQCTVCMN4iLlTZqapn5U="
+    - secure: "MSaLMw4hsg3w7mzIh2LP8cMiibggKoFqggz7L6mNyOZokHtdfDIo9GMmkdsdXAMU/UvWQX8+VcxQ0JPfJs5oRRNp6XySTvjlpT9rXTLo2cDJ42XacHat/KKR9SQN6kSEsje2cDbzbH+VUI8eN2mS2pUc2xR7rAyQuqLR6KryZfA="
+    - secure: "B+NQ/4lCLuB6v18e/ADSQhx78UMAg/HOyOdwZX4wzrVhkhWQqK3pINyGxv60y0JqruJrIS6MZpWqfs8vbLmLwjfdXeIi9Oqv8BVhoq9sr0h0r8s5Ncsv+oWIZJ+SiKUuZFmqIzbfs1uzMfgTcSsUqjYMuIjFoW6+Wsq4MPqTjhY="
+    - secure: "FKmbpZGNyRsh4rEWVFxx/+l53pDMmPuUzipwoyjAQWRwL1rBY661C24WqRTdgix8FMhfqtxt6dr02skL1zccRSzs6uEijb6TbsLaHdFizTQ0PakhPPf7iD54H9cS7tW8NNv/fGdIMHd1RKK8/v4Ht/yDz8nUvUdkG+4bw6d//jg="
+    - secure: "WaQDk7Wnt8PnzWzxzlSWDX1QTngnjBh4/9Up31b6uWxp1AEYXW9Ru/15JQpRZkn9H2M9E9G7VBA3zfkerrOtYnY9kTmo93U5EvDtnQNsgsC7s4DS0Hks2ZRi+h0Ms5mYCQgce+xwbjoi52hi9BAZ+S1prVueoHaw0fND3OrwEYM="
+    - secure: "KSpQBBZxtKHX8NzEgmMb5x8xJ4aobTmnerOsnFPjtrb1zH2n66ZQWHXxPjP0s90e6AwMx9O/UOiNsCseWjx2xA+JmMYJywDMW4WwnRXuZXILPppXY/iLuF442wQtKFqebAvf2e/Jxc1ceUYPgsGhR4AhkLzJFTPmZQ1DxfBH6Ps="
+    - secure: "cVjVN6HB0gu4//L/c3sDqGVDHVFHqDMIpC4rdx0yAnSkUJssulNqwMAgEJo3DyUa8541mbcYWOg/T+UVcFRCMURqCLyv60RpkqwWZGQuSNRcb13VGb5X2co5E1GzCGK66W7/tMK5raVT0txg5kxO/t+XnSxz03L1hJ7AVK0CF6c="
+    - secure: "dgq8FfcAIoUdlTgZr6pVHM9ZrpYI90gt2dN+WYF9xwPMb5H982C5Cke4yWcrpoa9fGLhs6ST0SGt2PQipCKMWnhAGLuiyKbRUW4sj1pB8eEoYjGSrAk5auLgqakCEtR8wZZBRE+me/pMDkkcaTEWaSczzO0ydig+RUMypuaZraU="
+    - secure: "aTZ3jrKPmpuDQ9ZxEBqPYRLltHGuXdsanlFr67eNnTNOk0I6qa6WJOyOwvFeaom+ItM2ERwodTd5dsS+PYjpwKGq/Ga3n6k2+LxNc/78Lr7MzUH6cHxPDAQteqYxK6WtkVJ2M+x5Uxsyds6CB+F0TY4xItmq2OBcVHx7ROOAZIA="
+    - secure: "CpdyGGPd+QYuSbMuZIctr+rx0es5trHUr+pyevij+uPrecqyPh81byq9G2/hX1wXVec0Sj97Fy0OpzckwqRwty+forUVjq6W4rBV5tV7EtDvQpWvSRJMSC4Fg4BfJMbLJB2UnMhmks8kkcvim149oL/YfKGOUXH13aFhq8JENxg="
+    - secure: "NobA/lccakRCBK/16vN6ctMhaXMw8Sb0uAsL2gtjasUPactVtiif3IE0UgEvlY2rLzOXEr2vi4WnmJNFa19PqyOYdqdV8TM8CXQcgMQ9Mkk9iUU7nqnkYdI7aZr3JyQ088A5f1sEM8whEyMxoxcMClJmFMeCC7hG8Ho7/TCOWLQ="
+    - secure: "ZCWYDTYUoSC0bghTzvePawnwBdgyrEhPhgrrlOsIGxpggNPW4DSZ5GH1e912lgISeuShDGl7HUNvYNxsGvsQwDCVAVaa4D0ra/o9EzxCZd+PD33xzFYS2s28ZYNS07THlG1BrMRnPbxMJl6mnBJ4XQ1UtK0lYfp6pGRbozQ9y5E="
+    - secure: "G+kSxneNk8NJ0iuIcTlOEL9sEDTW/llWZ9XTNfpoOBlzxPJmWxN3Gb2VlKjjSL3CUvvXBuAgYWO+5k5d2T0UEcVd2eHs4DVCrA+rpZroJFtUfvbo1Wkuz5mutvsUFtDweVWrDgx5WlZNMIMuv5bAHg7re8sZ14tBuwI8pdrgth4="
+    - secure: "OaIk50/hJHUdEYfOixO6PP53AjAcQN3NNpEP81eBvIx+sGG8H8F6O84FDTZBsZuQ8WItQygOJwHa2fpJrSCtaVNIb/Zw8emgoeqdRulAfD+qzZrnUJx4m7gXaZuojccBBuCOy/GB1hZHSpfIbGQ4ycV+odKfhZtRC9efgw5empA="
+
   matrix:
     - "activeresource=3.1"
     - "activeresource=3.2"
+
+before_script:
+  - bundle exec rake cleanup

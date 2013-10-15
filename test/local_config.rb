@@ -17,6 +17,14 @@ def local_config
         'login' => ENV['CRM_LOGIN'],
         'api_key' => ENV['CRM_API_KEY'],
       }.reject {|k,v| v.blank?}, "ENV")
+    elsif ENV['TRAVIS_JOB_NUMBER'].present?
+      tenant_number = ENV['TRAVIS_JOB_NUMBER'].split('.').last
+      puts "Detected Travis build. Using Tenant ##{tenant_number}."
+      HelpfulConfiguration.new({
+        'url' => ENV["CRM_#{tenant_number}_API_URL"],
+        'login' => ENV["CRM_#{tenant_number}_LOGIN"],
+        'api_key' => ENV["CRM_#{tenant_number}_API_KEY"],
+      }.reject {|k,v| v.blank?}, "Travis ENV")
     else
       local_config_file = either_file(
         Pathname(__FILE__).expand_path + "../config.json",
