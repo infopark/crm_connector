@@ -22,7 +22,8 @@ module Infopark; module Crm
     def test_find_all_returns_all_custom_types
       eventually do
         names = CustomType.find(:all).map(&:name)
-        assert [@@name_a, @@name_b] & names == [@@name_a, @@name_b]
+        intersection = [@@name_a, @@name_b] & names
+        assert_equal [@@name_a, @@name_b], intersection
       end
     end
 
