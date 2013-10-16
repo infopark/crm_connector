@@ -12,22 +12,24 @@ module Infopark; module Crm
       sleep 0.5
 
       @@name_a = "ct_a_#{iso_time}"
-      custom_attr = CustomType::CustomAttribute.new(:name => 'custom_test1', :type => 'string')
       @@custom_type = CustomType.create(:name => @@name_a, :kind => 'Activity',
-          :custom_attributes => [custom_attr])
+          :custom_attributes => [{:name => 'custom_test1', :type => 'string'}])
       @@name_b = "ct_b_#{iso_time}"
       CustomType.create(:name => @@name_b, :kind => 'Activity')
-      wait_for_indexer
     end
 
 
     def test_find_all_returns_all_custom_types
-      names = CustomType.find(:all).map(&:name)
-      assert [@@name_a, @@name_b] & names == [@@name_a, @@name_b]
+      eventually do
+        names = CustomType.find(:all).map(&:name)
+        assert [@@name_a, @@name_b] & names == [@@name_a, @@name_b]
+      end
     end
 
     def test_find_by_id_with_valid_id_should_return_an_instance
-      assert_show_succeeds(CustomType, @@name_a)
+      eventually do
+        assert_show_succeeds(CustomType, @@name_a)
+      end
     end
 
     def test_find_by_name_with_invalid_name_raises_an_error
@@ -35,11 +37,13 @@ module Infopark; module Crm
     end
 
     def test_a_custom_type_should_have_custom_attributes
-      type = CustomType.find(@@name_a)
-      assert_kind_of Array, type.custom_attributes
-      assert_kind_of CustomType::CustomAttribute, type.custom_attributes.first
-      assert_equal 'custom_test1', type.custom_attributes.first.name
-      assert_equal 'string', type.custom_attributes.first.type
+      eventually do
+        type = CustomType.find(@@name_a)
+        assert_kind_of Array, type.custom_attributes
+        assert_kind_of CustomType::CustomAttribute, type.custom_attributes.first
+        assert_equal 'custom_test1', type.custom_attributes.first.name
+        assert_equal 'string', type.custom_attributes.first.type
+      end
     end
 
   end

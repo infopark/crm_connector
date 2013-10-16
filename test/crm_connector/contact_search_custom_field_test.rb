@@ -16,18 +16,21 @@ module Infopark; module Crm
             :custom_contact_test => @@unique_value)
         Contact.create(:last_name => @@unique_value, :gender => 'M', :language => 'en',
             :custom_contact_test => "Not Muster")
-        wait_for_indexer
       end
     end
 
     def test_search_should_with_q_find_custom_field
-      result = Contact.search(:params => {:q => @@unique_value})
-      assert_equal 2, result.size
+      eventually do
+        result = Contact.search(:params => {:q => @@unique_value})
+        assert_equal 2, result.size
+      end
     end
 
     def test_search_with_custom_field_should_find_custom_field
-      result = Contact.search(:params => {:custom_contact_test => @@unique_value})
-      assert_equal 1, result.size
+      eventually do
+        result = Contact.search(:params => {:custom_contact_test => @@unique_value})
+        assert_equal 1, result.size
+      end
     end
   end
 end; end

@@ -105,16 +105,21 @@ module ConnectorTestHelper
         ":\n  #{resource.errors.full_messages.join("\n  ")}"
   end
 
-  def self.included(klass)
-    klass.extend(ClassMethods)
-  end
-
-  module ClassMethods
-    def wait_for_indexer
-      sleep 5
+  # taken from https://gist.github.com/mattwynne/1228927
+  def eventually(options = {})
+    timeout = options[:timeout] || 30
+    interval = options[:interval] || 0.2
+    time_limit = Time.now + timeout
+    loop do
+      begin
+        yield
+      rescue => error
+      end
+      return if error.nil?
+      raise error if Time.now >= time_limit
+      sleep interval
     end
   end
-
 end
 
 module AbstractTestCaseDeclarable

@@ -13,10 +13,16 @@ module Infopark; module Crm
 
       role = Role.create(:name => "Delete#{SecureRandom.hex(4)}_#{iso_time}")
       assert_not_nil role.id
+      eventually do
+        Role.find(role.id)
+      end
 
       assert_kind_of Net::HTTPOK, role.destroy
-      assert_raise ActiveResource::ResourceNotFound do
-        Role.find(role.id)
+
+      eventually do
+        assert_raise ActiveResource::ResourceNotFound do
+          Role.find(role.id)
+        end
       end
     end
 

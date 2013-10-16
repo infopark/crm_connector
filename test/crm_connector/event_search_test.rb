@@ -14,60 +14,78 @@ module Infopark; module Crm
             dt = Time.now + 1.day
             Event.create(:title => 'E', :dtstart_at => dt, :dtend_at => dt, :kind => 'base event')
           end
-          wait_for_indexer
         end
       end
     end
 
     def test_search_should_return_events
-      result = Event.search(:params => {})
-      assert_kind_of Event, result.first
-      assert result.size > 9, "Result count #{result.size} should be many"
+      eventually do
+        result = Event.search(:params => {})
+        assert_kind_of Event, result.first
+        assert result.size > 9, "Result count #{result.size} should be many"
+      end
     end
 
     def test_unsuccessful_search
-      result = Event.search(:params => {:kind => 'Theresnothinglikethis123'})
-      assert_equal 0, result.size
-      result = Event.search(:params => {:q => 'Theresnothinglikethis123'})
-      assert_equal 0, result.size
+      eventually do
+        result = Event.search(:params => {:kind => 'Theresnothinglikethis123'})
+        assert_equal 0, result.size
+      end
+      eventually do
+        result = Event.search(:params => {:q => 'Theresnothinglikethis123'})
+        assert_equal 0, result.size
+      end
     end
 
     def test_successful_search
-      result = Event.search(:params => {:kind => 'base event'})
-      assert_not_equal 0, result.size
+      eventually do
+        result = Event.search(:params => {:kind => 'base event'})
+        assert_not_equal 0, result.size
+      end
     end
 
     def test_search_should_return_count
-      result = Event.search(:params => {})
-      assert result.size > 15, "Result count #{result.size} should be larger"
+      eventually do
+        result = Event.search(:params => {})
+        assert result.size > 15, "Result count #{result.size} should be larger"
+      end
     end
 
     def test_search_should_return_items_in_continuation
-      result = Event.search(:params => {:q => '', :limit => 10})
-      assert_equal result.take(14).size, 14
+      eventually do
+        result = Event.search(:params => {:q => '', :limit => 10})
+        assert_equal result.take(14).size, 14
+      end
     end
 
     def test_sort_by_updated_at_works
-      result = Event.search(:params => {:sort_by => 'updated_at', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{result.size} should be larger"
-      timestamps = result.map(&:updated_at)
-      assert_equal timestamps.sort, timestamps, 'not sorted correctly'
+      search_params = {:sort_by => 'updated_at', :limit => 15}
+      eventually do
+        result = Event.search(:params => search_params).within_limit.to_a
+        assert 15 <= result.size, "Result count #{result.size} should be larger"
+        timestamps = result.map(&:updated_at)
+        assert_equal timestamps.sort, timestamps, 'not sorted correctly'
+      end
     end
 
     def test_sort_by_updated_at_asc_works
-      result = Event.search(:params =>
-          {:sort_by => 'updated_at', :sort_oder => 'asc', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{result.size} should be larger"
-      timestamps = result.map(&:updated_at)
-      assert_equal timestamps.sort, timestamps, 'not sorted correctly'
+      search_params = {:sort_by => 'updated_at', :sort_oder => 'asc', :limit => 15}
+      eventually do
+        result = Event.search(:params => search_params).within_limit.to_a
+        assert 15 <= result.size, "Result count #{result.size} should be larger"
+        timestamps = result.map(&:updated_at)
+        assert_equal timestamps.sort, timestamps, 'not sorted correctly'
+      end
     end
 
     def test_sort_by_updated_at_desc_works
-      result = Event.search(:params => {
-        :sort_by => 'updated_at', :sort_order => 'desc', :limit => 15}).within_limit.to_a
-      assert 15 <= result.size, "Result count #{result.size} should be larger"
-      timestamps = result.map(&:updated_at)
-      assert_equal timestamps.sort.reverse, timestamps, 'not sorted correctly'
+      search_params = {:sort_by => 'updated_at', :sort_order => 'desc', :limit => 15}
+      eventually do
+        result = Event.search(:params => search_params).within_limit.to_a
+          assert 15 <= result.size, "Result count #{result.size} should be larger"
+          timestamps = result.map(&:updated_at)
+          assert_equal timestamps.sort.reverse, timestamps, 'not sorted correctly'
+      end
     end
   end
 

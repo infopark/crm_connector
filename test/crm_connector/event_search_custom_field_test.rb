@@ -16,18 +16,21 @@ module Infopark; module Crm
             :title => 'Custom', :custom_event_test => @@unique_value)
         Event.create(:kind => t.name, :dtstart_at => Time.now, :dtend_at => Time.now,
             :title => @@unique_value, :custom_event_test => 'not master')
-        wait_for_indexer
       end
     end
 
     def test_search_should_with_q_find_custom_field
-      result = Event.search(:params => {:q => @@unique_value})
-      assert_equal 2, result.size
+      eventually do
+        result = Event.search(:params => {:q => @@unique_value})
+        assert_equal 2, result.size
+      end
     end
 
     def test_search_with_custom_field_should_find_custom_field
-      result = Event.search(:params => {:custom_event_test => @@unique_value})
-      assert_equal 1, result.size
+      eventually do
+        result = Event.search(:params => {:custom_event_test => @@unique_value})
+        assert_equal 1, result.size
+      end
     end
   end
 end; end
