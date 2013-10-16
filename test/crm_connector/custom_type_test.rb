@@ -12,11 +12,9 @@ module Infopark; module Crm
       sleep 0.5
 
       @@name_a = "ct_a_#{iso_time}"
-      CustomType.create(:name => @@name_a, :kind => 'Activity')
-      t = CustomType.find(@@name_a)
-      t.custom_attributes = [CustomType::CustomAttribute.new(:name => 'custom_test1', :type => 'string')]
-      t.save!
-      @@custom_type = t
+      custom_attr = CustomType::CustomAttribute.new(:name => 'custom_test1', :type => 'string')
+      @@custom_type = CustomType.create(:name => @@name_a, :kind => 'Activity',
+          :custom_attributes => [custom_attr])
       @@name_b = "ct_b_#{iso_time}"
       CustomType.create(:name => @@name_b, :kind => 'Activity')
       wait_for_indexer
@@ -29,25 +27,19 @@ module Infopark; module Crm
     end
 
     def test_find_by_id_with_valid_id_should_return_an_instance
-      assert_kind_of CustomType, ik = CustomType.find(@@name_a)
-      assert_equal @@name_a, ik.name
+      assert_show_succeeds(CustomType, @@name_a)
     end
 
-    # @webcrm_todo currently throws (which is correct for an active resource) - change requirements?
-    def pending_test_find_by_name_with_invalid_name_should_return_nil
-      assert_nil CustomType.find('unsupported bag')
+    def test_find_by_name_with_invalid_name_raises_an_error
+      assert_show_fails(CustomType, 'unsupported bag')
     end
 
     def test_a_custom_type_should_have_custom_attributes
-      type = CustomType.find(@@custom_type.name)
+      type = CustomType.find(@@name_a)
       assert_kind_of Array, type.custom_attributes
       assert_kind_of CustomType::CustomAttribute, type.custom_attributes.first
       assert_equal 'custom_test1', type.custom_attributes.first.name
-    end
-
-    def test_custom_attributes_type_is_accessible
-      custom_attributes = CustomType.find(@@custom_type.name).custom_attributes
-      assert_equal 'string', custom_attributes.first.type
+      assert_equal 'string', type.custom_attributes.first.type
     end
 
   end
