@@ -161,4 +161,5 @@ class ConnectorTestCase < Test::Unit::TestCase
   include AssertionExtensions
   include AbstractTestCaseDeclarable
   abstract_test_case
+  self.test_order = :random
 end
