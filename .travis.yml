@@ -26,10 +26,26 @@ env:
     # CRM_6_LOGIN=root
     # CRM_6_API_KEY=
 
-    #infopark credentials
-    - secure: "Atxwks5Hb8MHXm2Im3FyH1w14zW/9JG7TX3jLBc3S4D9tL6Atyy3fDfgZDDf\nH8uBL7lQv9P+M9Te06abLCsLCQzqM/vxKEan6lzXdq5LTUoXPX1qq3wN28lD\nnYNyBGJA1UCzAWfSQpBEt/t0NcIFn6kGDIDN7+m4ECG4QGerI0M="
-    - secure: "ITNrbl5zoJZ+E+TxU0uvngnsaWt64zFuCKxldu7E3KBZJGX0um1jwh1qkefH\npSoZrVSgz5ksScko9VhDWDKe8hof/V4Zc0JysGYDaAmY4xC7wEpk8+C7wU+b\nRAvbSrCuYSxDzzb3CELnYh7Zvo3di02iKZtaF4vvWOaM1X2eQwQ="
-    - secure: "cM4Ty0XZ0WZOoUD26WDJ4P3is/hTyKYJHBqt7v/DIrYCvZRntHV0+bWa0lYV\njQCArJJdhFu4l3MDU+jNABdzWxWmT5+3ol+pBRVXXvrsHtKX0CCXzVB//Z9J\nhJdV4kIwvNKBWpK90G6Vqmwg57NpzK3cbSVqQi0fN2rk/NJXf1Q="
+    # infopark's credentials
+    # cat envvars|travis encrypt -r infopark/crm_connector -s
+    - secure: "cQKLmI+TmpgTaPvRpZ0+0O8aCeYIi0H9iBIG75ALpWZupP0fxe8znljpVj4rX07QbyIrohs9I9Y8fU6gwOxnoqiq0VtMgRRPxyddVdSLnHUEM37/xYAJ9Ts+fMfzT4K9HbFkQ5DARVq0TD+r+vbuUFf1ZcWfNLzZhYmqrTzes6Y="
+    - secure: "E/j6gEspT7IXGxPsv/mZ9smjXQYtJB0sCajRikmhWUxp+ZgaFpFfjY9XdrFgS2IJp54CaqMzPvuLuVpsbNRrkrol9cbt70zU3PdaUHS9hOtd31HBjBnez+M5y9bq/cz3MSd57UAAaKwyuDz5YM+uU8RiN9eDPRrF8+qjPTh9kMg="
+    - secure: "gr2Y7+EIEhp5mmXROldfA+82IfeLdiEJUJXS4LhJ7RxjROK+u76RdO8WCPKU5hfPUedG0kGeXxJmb8VC4jmy6G5BMyBDF5l7nQqaDbq2i/fLfsz3zw+quAm4aKFm8fnNeyhwP7h/XN6x6fflL6RkWJO05oWlA4NQgmktuuED11Y="
+    - secure: "H4E/PlSB+aU/Rdc5DW57Z21yyDjHNZbM5E+WJhdBW6ibfWzgXHE6aDpijeVxBVayms2eBZWe9HFhqkVQvLjqGPcf88VabYePmSEcZbG7HTq0YtRX6w6+mTAmWgYNM2EOYQqf5xyFqJk9vC1U+W2cqGV9sy8YB+ead6qbaUlqro8="
+    - secure: "VCpPneO5zI3Wprg9+AvLNeklkxSvM6GOaMqIKqCoZ3BRD3e9YRsEw9JxXpvVMFTf8xm+qTvxN5jdinaQRSvj1Gi0KV7Okravf+8mr4UNVBUCG0wH4P7fruZsDPcePq1+28spqJHSkzHWPdidrF6FGPAu3Ml8LmzpLivzxX9ZWQc="
+    - secure: "fvjE5qdaTK1kKpcSaiUWSnpxR4ZMA3yB4BW0f3/R9/+nPYeKcbm8mndPqX42Qa5zm8j7H3J8VG9ujDxeD4N24v+ZiSAbFQfjtwNtJOkcnglO9AYHa4qxYqe3qM6NdzgXRdCYxMChOH7R4Vqo6KUW/fttvfysJgZOEoCpvpNd7VQ="
+    - secure: "BQ0tHLJSlpR+hz0Xz0YLdAK7Isy+0f0t0jYJdcOSFjG1yJgByJxIn3JKW/vCTJu0r1RbYGlmeGKLHuM3ixYEI4rKQvWaGKMyEWUu0iODqWXOQ9jWzpckJCB8TD3uNWiGY6HjRuEfN5GHNwIWIOs4fYkTOVC0Td+JxCgYc+nXypk="
+    - secure: "YKghpDl1/tvjjIteRqcJQpuo53DjxvstYqOUFxr8c3DnG5BuZC3RM3uzQ+OLuRozCtZws19rTsdxsbkkLCdZZ1XFf3/xumwLBzYg/BwBccQ+CZfsqE1yXFcwhjebRcFBZxzCINcYzYjhPgra0jA/waZJqC9zQvxEEUfEnFNAMAI="
+    - secure: "gQaYvrx3VcGnftixP3imAkhVbXprhXTwmCvclArAiIIs/AMDQB3nAQJYIHeAlcXaFMg0J556eb2UQcQNXX3DlWsfYFExL0ap//AK/O6sO8YQytE0XyPgDhdxq8bVO+u5dln2V7XG0A7AuoUJBiJGEIc2NoeqWKklOeHs1vG7XBQ="
+    - secure: "K5g/P0PcqFRIrcANMZa5KzsFKddHdzbMJL1ApLHDoURZVAq9lexX7vO18UGukzEyqUP5lxR4eswzexiXdCL++nhiRLMI0wAqLKa9cC4gMv15KRj7hx7kNAcxGWbmePwtR1p/ZamIoXYkqblz4q3CbdIlTQhG97DfaF2RAhDR3sI="
+    - secure: "C+ZFmyRYgXTEOTus6cJ6KjHENK0DpP7VC2RAy0Oj4ADts/AWxsH7PGxQoiMtClWK/0bf4AU4mLZmP1xImgLy0MYyxRGTaFzgB7aPGYQPXxoVc0b607FNvkGjGiWsacrMeYzUAJNU5AGkqQvJixK3PgN68Nkkeu63SV6pd/t//OA="
+    - secure: "Fel2tAbCa22/cAkliUCdhae/wio1lz2DzbIYQARpKgP1eXy1cioeMNB/KR5C1JUI7PjQ0c8qjaYIrqznZvVlycyPJVNUKjfbgq82VGc3H1U3oSI/TQqpFbMrtDfHOVyTrSBN1NyGOthXXxhJ6i0tskayT0Qzww9kkcymJKIv0NI="
+    - secure: "Xescbw/8Wq70yUUmFuTdNu1AGXEiDQDlJt6X10piMfKa8pYtdNZsZ7f5PK0THDrLAfq3JEBglr8O6VYMSCIJ8cxQcpCcTw76e27X2JLEXZw3oNL9B+sJC6EKnyZDZm7zdlda9mZmmtituTQqlBZaw8VMuFCKNwzR4Kab3BdlV38="
+    - secure: "GUZr3IXfaisMNeH38dv8gViagnDQT3Di9OwhY954/Kc43A894RwfnDOR9p6UvZQBE0uuzSFH/xFmTYvGBubSBCyaNhgbpz/OIfsLwdRJHitTuDe8lAL/1IvffNBDwTVGl+6SSwj+Ywwe94oKNZX8K8qf85ilgb98XfOwOu1aXGM="
+    - secure: "XmesTTzYNOoCYkLFGfjqAovuWLvq4c5rv2iTyWj8e2mgKIbzr0iZnxH62wnEfvv1Z9tJOW5vlEU5cfXVnaZ5zaBEV84QwGDntyG1/9DX/kEDYSdfpzHdkmZYOazFi04+oc3T/hPXDgIQYf6u9E2Y8AFs9/xxzPhAGoE6NVg8pco="
+    - secure: "OWm92LboEDL+miTmML9ENPyNYQ6T8FClOpuR5YGg3rT5Zw9BuQvIJYySphXZ5z0R8Tfm6njumDDRRV+SL8FBw/T5H1gVREGtKWaQx33qf5uHUQixk1s2RJpSkcijjtdXL7gXFeHDsYo2Fxr5lAs47PJgaan5qJvRf4NxTBrvGDI="
+    - secure: "dgT1ZcYxFvSexiWNmNdTLcv91V3m8cstkUy4LRI9DReBtxkwwcWgfAagCSpN5T5kOgHXiQHvIt3tzhSp5UrQDQc92eiNZJDLFBVBGgIDpGrsqqTHV+XgWLpNBfZwXJHXTQRTqvkDwmBKj0ht0UJWu5pTb+UusbGVsqJ/UBKo+kc="
+    - secure: "UdAIUUd796lBocOqIONlDTIOZhBOBmYWz+1jvsTE58HW2Vyh5WtXpub+qKvj6aVYU1SLj2exqZYCAzPk7hx5cNiOc1Vqf5UUXCA+s3R45tfKQkz33Ysq8pxqlVzIgYnhdK+zktU5Yuc5qcmHmDWOSdI5aIPNjWKb6lE1qHNuVYk="
 
     #apepper credentials
     - secure: "EX8SzmnxM4SpUKYIaBvYxpnAN605PvS6fpjdCdRVNL7E9+pFzQCoVFAdnXcz\nqqTCwXhh4+sojHzJ/omOj/ePD9YsSogEFnTj1A68Y86q2Y+qUZ5eS78Glxeh\nM5yF0EA7/uS7ahYzKR8+VZf2m2r0Hv5Jo9a2guw/HxWGKO1Mk20="
