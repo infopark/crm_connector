@@ -77,17 +77,17 @@ module Infopark; module Crm
       assert_match @contact.id, result.id
     end
 
-    def pending_test_set_a_new_password_should_fail_with_empty_password
+    def test_set_a_new_password_should_fail_with_empty_password
       assert_raise(ActiveResource::ResourceNotFound) {
-          Contact.password_set('', 'invalid_token')
-          }
+        Contact.password_set('', 'invalid_token')
+      }
     end
 
     # @webcrm_todo currently: 500 on server
-    def pending_test_set_a_new_password_should_fail_with_wrong_token
+    def test_set_a_new_password_should_fail_with_wrong_token
       assert_raise(ActiveResource::ResourceNotFound) {
-          Contact.password_set('my_password', 'invalid_token')
-          }
+        Contact.password_set('my_password', 'invalid_token')
+      }
     end
 
     def test_set_a_new_password_should_succeed_with_given_login
