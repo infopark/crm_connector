@@ -67,7 +67,10 @@ module Infopark; module Crm
     end
 
     def test_authenticate_with_correct_credencials_should_succeed
-      @contact.password_set('correct_password')
+      token = @contact.password_request(:params => {:only_get_token => true})
+      eventually do
+        Contact.password_set('correct_password', token)
+      end
 
       result = Contact.authenticate(@contact.login, 'correct_password')
       assert_kind_of Contact, result
@@ -88,7 +91,11 @@ module Infopark; module Crm
     end
 
     def test_set_a_new_password_should_succeed_with_given_login
-      result = @contact.password_set('my_funky_password')
+      token = @contact.password_request(:params => {:only_get_token => true})
+      result = nil
+      eventually do
+        result = Contact.password_set('my_funky_password', token)
+      end
       assert_kind_of String, result
     end
 
