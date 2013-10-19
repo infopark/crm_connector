@@ -83,7 +83,6 @@ module Infopark; module Crm
       }
     end
 
-    # @webcrm_todo currently: 500 on server
     def test_set_a_new_password_should_fail_with_wrong_token
       assert_raise(ActiveResource::ResourceNotFound) {
         Contact.password_set('my_password', 'invalid_token')
