@@ -30,12 +30,14 @@ module Infopark; module Crm
       activity.comment_attachments = ["#{perm.upload_id}/LICENSE.txt"]
       activity.save
 
-      activity = Activity.find(activity.id)
-      attachment_id = activity.comments.last.attachments.first
-      assert_match(/LICENSE\.txt$/, attachment_id)
+      eventually do
+        activity = Activity.find(activity.id)
+        attachment_id = activity.comments.last.attachments.first
+        assert_match(/LICENSE\.txt$/, attachment_id)
 
-      download_url = Attachment.download_url(attachment_id, activity.id)
-      assert_match(/amazonaws/, download_url)
+        download_url = Attachment.download_url(attachment_id, activity.id)
+        assert_match(/amazonaws/, download_url)
+      end
     end
 
   end

@@ -16,13 +16,21 @@ module Infopark; module Crm
     end
 
     def test_updating_a_role_should_be_successful
-      assert_update_succeeds(@@role, :description => 'Hello Universe')
-      assert_equal 'Hello Universe', Role.find(@@role.id).description
+      eventually do
+        assert_update_succeeds(@@role, :description => 'Hello Universe')
+      end
+      eventually do
+        assert_equal 'Hello Universe', Role.find(@@role.id).description
+      end
     end
 
     def test_updating_a_role_by_save_should_be_successful
-      assert_update_by_save_succeeds(@@role, :description => 'Hello Meta Universe')
-      assert_equal 'Hello Meta Universe', Role.find(@@role.id).description
+      eventually do
+        assert_update_by_save_succeeds(@@role, :description => 'Hello Meta Universe')
+      end
+      eventually do
+        assert_equal 'Hello Meta Universe', Role.find(@@role.id).description
+      end
     end
   end
 

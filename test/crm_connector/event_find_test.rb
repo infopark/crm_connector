@@ -20,17 +20,17 @@ module Infopark; module Crm
             :kind => 'base event')
         e.save!
         @@event_id = e.id
-
-        wait_for_indexer
       end
     end
 
     def test_find_all_should_return_a_list_of_all_open_events
-      events = Event.find(:all)
-      assert_kind_of Enumerator, events
-      assert_kind_of Event, events.first
-      assert events.any?{|e| e.title == "The boring stuff"}
-      assert !events.any?{|e| e.title == 'Party all the time'}
+      eventually do
+        events = Event.find(:all)
+        assert_kind_of Enumerator, events
+        assert_kind_of Event, events.first
+        assert events.any?{|e| e.title == "The boring stuff"}
+        assert !events.any?{|e| e.title == 'Party all the time'}
+      end
     end
 
     # @webcrm_todo include_closed deprecated?
@@ -42,8 +42,10 @@ module Infopark; module Crm
     end
 
     def test_find_by_id_should_return_the_event
-      event = Event.find(@@event_id)
-      assert_equal "The boring stuff", event.title
+      eventually do
+        event = Event.find(@@event_id)
+        assert_equal "The boring stuff", event.title
+      end
     end
 
     def test_find_by_id_with_a_nonexisting_id_should_raise_an_error

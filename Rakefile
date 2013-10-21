@@ -31,7 +31,6 @@ task :install => :gem do
   sh "gem install infopark_crm_connector-#{gemspec.version}.gem --no-rdoc --no-ri"
 end
 
-
 desc "Once in a while cleanup the CRM database content"
 task :cleanup do
   require "./script/connector_initializer"
