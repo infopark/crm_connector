@@ -80,10 +80,16 @@ task :cleanup do
       else
         next if Time.parse(item.updated_at) > t
       end
-      $stdout.write "."
-      $stdout.flush
-      i += 1
-      item.destroy
+      begin
+        item.destroy
+        $stdout.write "."
+        $stdout.flush
+        i += 1
+      rescue
+        # concurrent cleanup conflict
+        $stdout.write " "
+        $stdout.flush
+      end
     end
     puts "\n-> deleted #{i} items"
   end
