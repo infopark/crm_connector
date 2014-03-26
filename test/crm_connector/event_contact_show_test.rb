@@ -23,7 +23,7 @@ module Infopark; module Crm
             :gender => 'M',
             :want_geo_location => false
             })
-        
+
         @@event_contact_id = EventContact.create(:contact_id => c.id, :event_id => e.id, :state => 'registered').id
       end
     end
