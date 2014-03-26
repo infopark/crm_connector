@@ -22,13 +22,13 @@ module Infopark; module Crm; module Core
     # The size of the array is less than or equal to the +limit+ parameter value.
     # @return [Array]
     def within_limit
-      @collection
+      @collection.to_a
     end
 
     ##
     # @!method size
     # The total count given by the last search response, if available.
-    # If not available this method is undefiend.
+    # If not available this method is undefined.
     # @return [Integer] The total count given by the last search response, if available.
     ##
 
