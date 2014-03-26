@@ -1,5 +1,3 @@
-require 'backports'
-
 module Infopark; module Crm; module Core
   # Transparent wrapper for the web services continuation ability
   class Enumerator < Enumerator
