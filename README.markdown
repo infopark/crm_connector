@@ -102,6 +102,10 @@ Run tests with all supported versions of Active Resource:
 
 # Changelog
 
+## Version 1.2.0 - 2014-03-26
+* Added support for ActiveResource 4.0.
+* Remove support for Ruby 1.8.
+
 ## Version 1.1.0 - 2013-10-21
 * Remove support for ActiveResource 3.0.
 * Added `Attachment.upload_permission`, `Attachment.download_url` and the activity comment property `attachments`. See [API documentation](https://dev.infopark.net/26635f6d056215c9/attachments)
