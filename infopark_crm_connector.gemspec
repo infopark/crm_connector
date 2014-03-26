@@ -15,6 +15,5 @@ Gem::Specification.new do |s|
   s.has_rdoc = 'yard'
   s.license = 'LGPLv3'
 
-  s.add_dependency("activeresource", "~>3.1")
-  s.add_dependency("backports", ">=2.3") #support ruby 1.9 features in ruby 1.8
+  s.add_dependency("activeresource", ">=3.1")
 end

@@ -1,6 +1,5 @@
 language: ruby
 rvm:
-  - "1.8.7"
   - "1.9.3"
   - "2.0.0"
 env:
@@ -76,6 +75,7 @@ env:
   matrix:
     - "activeresource=3.1"
     - "activeresource=3.2"
+    - "activeresource=4.0"
 
 before_script:
   - bundle exec rake cleanup

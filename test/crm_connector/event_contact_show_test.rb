@@ -1,6 +1,4 @@
 # encoding: utf-8
-
-require 'backports'
 require_relative '../test_helper'
 
 module Infopark; module Crm
@@ -25,7 +23,7 @@ module Infopark; module Crm
             :gender => 'M',
             :want_geo_location => false
             })
-        
+
         @@event_contact_id = EventContact.create(:contact_id => c.id, :event_id => e.id, :state => 'registered').id
       end
     end

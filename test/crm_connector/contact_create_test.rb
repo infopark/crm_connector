@@ -1,19 +1,17 @@
 # encoding: utf-8
-
-require 'backports'
 require_relative '../test_helper'
 
 module Infopark; module Crm
 
   class ContactCreateTest < ConnectorTestCase
-    
+
     class << self
       def startup
         a = Account.new(:name => 'Z Count', :want_geo_location => false)
         a.save!
         @@account_id = a.id
       end
-    end    
+    end
 
     def test_create_for_an_account_should_be_successful
       contact = Contact.create({

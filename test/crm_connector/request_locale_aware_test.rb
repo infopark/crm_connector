@@ -1,8 +1,5 @@
 # encoding: utf-8
-
-require 'backports'
 require_relative '../test_helper'
-
 
 module Infopark; module Crm
 
