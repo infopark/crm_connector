@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary = 'Infopark CRM Connector'
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5")
   s.has_rdoc = 'yard'
-  s.license = 'LGPLv3'
+  s.license = 'LGPL-3.0'
 
   s.add_dependency("activeresource", ">=3.1")
 end
