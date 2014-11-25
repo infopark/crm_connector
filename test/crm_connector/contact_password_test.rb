@@ -72,7 +72,7 @@ module Infopark; module Crm
 
       result = Contact.authenticate(@contact.login, 'correct_password')
       assert_kind_of Contact, result
-      assert_match @contact.id, result.id
+      assert_equal @contact.id, result.id
     end
 
     def test_set_a_new_password_should_fail_with_empty_password
