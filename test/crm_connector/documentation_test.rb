@@ -7,12 +7,12 @@ module Infopark; module Crm
     class << self
       def startup
         CrmSetup.custom_types
-        @@activity = Activity.create(:kind => 'support case', :state=>'created', :title => 'act, show, test!')
+        @@activity = Activity.create(:kind => 'support-case', :state=>'created', :title => 'act, show, test!')
       end
     end
 
     def test_activity_example
-      activity = Infopark::Crm::Activity.new(:kind => 'support case')
+      activity = Infopark::Crm::Activity.new(:kind => 'support-case')
       activity.title = 'Sprechen Sie Deutsch?'
       Infopark::Crm.configure {|c| c.locale = 'de'}
 

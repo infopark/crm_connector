@@ -23,7 +23,7 @@ module Infopark; module Crm
               { :name => 'breakfast', :type => 'string' },
               { :name => 'lunch', :type => 'string' }
             ],
-            :kind => 'base event')
+            :kind => 'base-event')
         @@event_id = e.id
         Mailing.create(:title => 'Search Event', :mailing_type => 'i', :event_id => @@event_id)
       end

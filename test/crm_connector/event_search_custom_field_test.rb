@@ -6,8 +6,9 @@ module Infopark; module Crm
     class << self
       def startup
         ca = {:name => 'event_test', :type => 'string'}
-        t = CustomType.create(:name => "#{SecureRandom.hex(2)}_#{iso_time}",
+        t = CustomType.create(:name => "e#{SecureRandom.hex(2)}-#{iso_time}",
             :kind => 'Event', :custom_attributes => [ca])
+        raise t.errors.inspect unless t.valid?
 
         @@unique_value = "Master#{SecureRandom.hex(8)}"
         Event.create(:kind => t.name, :dtstart_at => Time.now, :dtend_at => Time.now,

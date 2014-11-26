@@ -22,11 +22,11 @@ module Infopark; module Crm
       response = RestClient.post(perm.url, params)
       assert_equal 204, response.code
 
-      activity = Activity.create(:kind => 'support case',
+      activity = Activity.create(:kind => 'support-case',
           :state=>'created', :title => 'attachment test')
       activity.comment_notes = "See the attached file"
       activity.comment_attachments = ["#{perm.upload_id}/LICENSE.txt"]
-      activity.save
+      activity.save!
 
       eventually do
         activity = Activity.find(activity.id)

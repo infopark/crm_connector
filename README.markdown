@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/infopark/crm_connector.png?branch=master)](https://travis-ci.org/infopark/crm_connector)
 
-Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm). It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/). Currently, Active Resource 3.1, 3.2 and 4.0 in combination with Ruby 1.9.x and 2.0.0 are tested and supported.
+Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm). It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/). Currently, Active Resource 3.2 and 4.0 in combination with Ruby 1.9.x and 2.0.0 are tested and supported.
 
 # Installation
 
@@ -46,11 +46,11 @@ This Ruby SDK provides the WebCRM's domain models {Infopark::Crm::Account Accoun
 ## Activity
 
     # Create a new activity kind
-    Infopark::Crm::CustomType.create(:name => 'support case', :kind => 'Activity',
+    Infopark::Crm::CustomType.create(:name => 'support-case', :kind => 'Activity',
         :states => ['created'])
 
     # Create a new activity
-    activity = Infopark::Crm::Activity.new(:kind => 'support case')
+    activity = Infopark::Crm::Activity.new(:kind => 'support-case')
 
     # Set properties of this activity
     activity.title = 'Sprechen Sie Deutsch?'
@@ -101,6 +101,9 @@ Run tests with all supported versions of Active Resource:
     open doc/index.html
 
 # Changelog
+
+## Version 1.3.0 - TBD
+* Removed support for ActiveResource 3.1.
 
 ## Version 1.2.0 - 2014-03-26
 * Added support for ActiveResource 4.0.

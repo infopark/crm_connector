@@ -11,7 +11,7 @@ module Infopark; module Crm
     # @webcrm_rest_url <code>GET /api/activities/search</code>
     # @example
     #   results = Infopark::Crm::Activity.search(:params => {:state => 'created'})
-    #   results = Infopark::Crm::Activity.search(:params => {:kind => 'support case'})
+    #   results = Infopark::Crm::Activity.search(:params => {:kind => 'support-case'})
     #   results = Infopark::Crm::Activity.search(:params => {:contact_id => cid})
     #   results = Infopark::Crm::Activity.search(:params => {:account_id => aid})
     #   results = Infopark::Crm::Activity.search(:params => {:q => 'full-text search'})

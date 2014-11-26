@@ -8,7 +8,7 @@ module Infopark; module Crm
       CrmSetup.custom_types
       @@required_activity_params = {
           :title => 'Needs to be fixed',
-          :kind => 'support case',
+          :kind => 'support-case',
           :state => 'created',
           :email_cc => 'biene.maja@example.com',
           :priority => 3,

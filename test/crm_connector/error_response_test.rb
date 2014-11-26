@@ -37,7 +37,7 @@ module Infopark; module Crm
       begin
         FailingResource.find('unknown')
       rescue ActiveResource::ServerError => e
-        assert_match "This is, what went wrong: ****", e.response.body
+        assert_equal "This is, what went wrong: ****", e.response.body
         return
       end
       fail "Test setup error"

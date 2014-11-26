@@ -10,9 +10,9 @@ module Infopark; module Crm
 
     def test_activity_with_valid_kind_returns_nil_for_uninitialized_custom_attribute_value
       # text
-      assert_equal nil, Activity.new(:kind => 'support case').custom_agent
+      assert_equal nil, Activity.new(:kind => 'support-case').custom_agent
       # enum (also single valued ...)
-      assert_equal nil, Activity.new(:kind => 'support case').custom_priority
+      assert_equal nil, Activity.new(:kind => 'support-case').custom_priority
     end
 
     def test_activity_without_kind_raises_no_method_for_unknown_property

@@ -9,7 +9,7 @@ module Infopark; module Crm
       @@event_name = "Event_#{SecureRandom.hex(8)}"
       @@event = Event.create({
           :name => @@event_name,
-          :kind => 'base event',
+          :kind => 'base-event',
           :title => 'Event title',
           :dtstart_at => Time.now,
           :dtend_at => Time.now + 2.days,

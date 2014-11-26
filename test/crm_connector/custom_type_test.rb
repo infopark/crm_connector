@@ -9,10 +9,10 @@ module Infopark; module Crm
       # This is needed to not get AWS::DynamoDB::Errors::ConditionalCheckFailedException
       sleep 0.5
 
-      @@name_a = "ct_a_#{iso_time}"
+      @@name_a = "ct-a-#{iso_time}"
       @@custom_type = CustomType.create(:name => @@name_a, :kind => 'Activity',
           :custom_attributes => [{:name => 'custom_test1', :type => 'string'}])
-      @@name_b = "ct_b_#{iso_time}"
+      @@name_b = "ct-b-#{iso_time}"
       CustomType.create(:name => @@name_b, :kind => 'Activity')
     end
 

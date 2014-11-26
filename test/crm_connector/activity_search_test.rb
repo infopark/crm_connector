@@ -9,7 +9,7 @@ module Infopark; module Crm
         CrmSetup.custom_types
         if (Activity.find(:all, :params => {:limit => 15}).within_limit.size < 15)
           15.times do
-            Activity.new(:kind => 'support case', :state=>'created', :title => 'A').save!
+            Activity.new(:kind => 'support-case', :state=>'created', :title => 'A').save!
           end
         end
       end
