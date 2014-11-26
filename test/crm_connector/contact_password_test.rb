@@ -65,14 +65,20 @@ module Infopark; module Crm
     end
 
     def test_authenticate_with_correct_credencials_should_succeed
+      password = SecureRandom.hex(16)
+
       token = @contact.password_request(:params => {:only_get_token => true})
       eventually do
-        Contact.password_set('correct_password', token)
+        Contact.password_set(password, token)
       end
 
-      result = Contact.authenticate(@contact.login, 'correct_password')
+      result = Contact.authenticate(@contact.login, password)
       assert_kind_of Contact, result
       assert_equal @contact.id, result.id
+
+      assert_raise Errors::AuthenticationFailed do
+        Contact.authenticate(@contact.login, 'wrong')
+      end
     end
 
     def test_set_a_new_password_should_fail_with_empty_password
@@ -85,15 +91,6 @@ module Infopark; module Crm
       assert_raise(ActiveResource::ResourceNotFound) {
         Contact.password_set('my_password', 'invalid_token')
       }
-    end
-
-    def test_set_a_new_password_should_succeed_with_given_login
-      token = @contact.password_request(:params => {:only_get_token => true})
-      result = nil
-      eventually do
-        result = Contact.password_set('my_funky_password', token)
-      end
-      assert_kind_of String, result
     end
 
   end
