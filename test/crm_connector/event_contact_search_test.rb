@@ -14,7 +14,7 @@ module Infopark; module Crm
             { :name => 'breakfast', :type => 'string' },
             { :name => 'lunch', :type => 'string' }
           ],
-          :kind => 'base event'
+          :kind => 'base-event'
         }
         @@event = Event.create(event_attr.merge(:title => 'Event'))
         other_event = Event.create(event_attr.merge(:title => 'Other Event'))

@@ -7,7 +7,7 @@ module Infopark; module Crm
     class << self
       def startup
         CrmSetup.custom_types
-        @@activity = Activity.create(:kind => 'support case', :state=>'created', :title => 'act, show, test!')
+        @@activity = Activity.create(:kind => 'support-case', :state=>'created', :title => 'act, show, test!')
       end
     end
 
@@ -62,7 +62,7 @@ module Infopark; module Crm
     def test_show_activtity_custom_type_object
       assert_not_nil(@@activity.custom_type)
       assert_kind_of(CustomType, @@activity.custom_type)
-      assert_equal(['created'], @@activity.custom_type.states)
+      assert(@@activity.custom_type.states.include?('created'))
     end
 
     def test_show_activtity_custom_type_object_with_no_custom_type_should_return_nil

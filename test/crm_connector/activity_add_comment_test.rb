@@ -7,7 +7,7 @@ module Infopark; module Crm
     class << self
       def startup
         CrmSetup.custom_types
-        @@activity = Activity.create(:kind => 'support case', :state=>'created', :title => 'Changeme')
+        @@activity = Activity.create(:kind => 'support-case', :state=>'created', :title => 'Changeme')
         @@old_comments = @@activity.comments
         @@activity.comment_notes = 'Ein neuer Kommentar'
         @@activity.comment_published = true

@@ -7,7 +7,7 @@ module Infopark; module Crm
     class << self
       def startup
         CrmSetup.custom_types
-        @@activity = Activity.create(:kind => 'support case', :state=>'created', :title => 'Changeme')
+        @@activity = Activity.create(:kind => 'support-case', :state=>'created', :title => 'Changeme')
       end
     end
 

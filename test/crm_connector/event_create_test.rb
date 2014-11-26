@@ -19,7 +19,7 @@ module Infopark; module Crm
           { :name => 'breakfast', :type => 'string' },
           { :name => 'lunch', :type => 'string' }
         ],
-        :kind => 'base event'
+        :kind => 'base-event'
         })
     end
 
@@ -32,7 +32,7 @@ module Infopark; module Crm
           { :name => 'breakfast', :type => 'string' },
           { :name => 'lunch', :type => 'string' }
         ],
-        :kind => 'base event'
+        :kind => 'base-event'
         })
     end
 

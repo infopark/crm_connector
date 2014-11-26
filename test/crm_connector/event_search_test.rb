@@ -10,7 +10,7 @@ module Infopark; module Crm
         if (Event.find(:all, :params => {:limit => 15}).within_limit.size < 15)
           15.times do
             dt = Time.now + 1.day
-            Event.create(:title => 'E', :dtstart_at => dt, :dtend_at => dt, :kind => 'base event')
+            Event.create(:title => 'E', :dtstart_at => dt, :dtend_at => dt, :kind => 'base-event')
           end
         end
       end
@@ -37,7 +37,7 @@ module Infopark; module Crm
 
     def test_successful_search
       eventually do
-        result = Event.search(:params => {:kind => 'base event'})
+        result = Event.search(:params => {:kind => 'base-event'})
         assert_not_equal 0, result.size
       end
     end

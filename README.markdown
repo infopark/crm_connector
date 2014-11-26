@@ -46,11 +46,11 @@ This Ruby SDK provides the WebCRM's domain models {Infopark::Crm::Account Accoun
 ## Activity
 
     # Create a new activity kind
-    Infopark::Crm::CustomType.create(:name => 'support case', :kind => 'Activity',
+    Infopark::Crm::CustomType.create(:name => 'support-case', :kind => 'Activity',
         :states => ['created'])
 
     # Create a new activity
-    activity = Infopark::Crm::Activity.new(:kind => 'support case')
+    activity = Infopark::Crm::Activity.new(:kind => 'support-case')
 
     # Set properties of this activity
     activity.title = 'Sprechen Sie Deutsch?'

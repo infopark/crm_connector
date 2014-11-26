@@ -53,12 +53,12 @@ task :cleanup do
       when CustomType
         next if [
           "account",
-          "base event",
+          "base-event",
           "contact",
           "note",
-          "support case",
+          "support-case",
         ].include?(item.name)
-        if item.name =~ /_(\d{14}Z)$/
+        if item.name =~ /[_-](\d{14}Z?)$/
           begin
             next if Time.parse($1) > t
           rescue ArgumentError
@@ -67,7 +67,7 @@ task :cleanup do
         end
       when Role
         next if item.name == "superuser"
-        if item.name =~ /_(\d{14}Z)$/
+        if item.name =~ /[_-](\d{14}Z?)$/
           begin
             next if Time.parse($1) > t
           rescue ArgumentError

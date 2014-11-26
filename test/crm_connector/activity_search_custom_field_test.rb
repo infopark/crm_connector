@@ -6,9 +6,10 @@ module Infopark; module Crm
     class << self
       def startup
         t = CustomType.create(
-            :name => "#{SecureRandom.hex(2)}_#{iso_time}",
+            :name => "a#{SecureRandom.hex(2)}-#{iso_time}",
             :kind => 'Activity',
             :custom_attributes => [{:name => 'activity_test', :type => 'string'}])
+        raise t.errors.inspect unless t.valid?
         @@unique_value = "Master#{SecureRandom.hex(8)}"
         Activity.create(:kind => t.name, :title => 'Custom',
             :custom_activity_test => @@unique_value)
