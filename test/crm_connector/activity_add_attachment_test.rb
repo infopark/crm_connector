@@ -26,7 +26,7 @@ module Infopark; module Crm
           :state=>'created', :title => 'attachment test')
       activity.comment_notes = "See the attached file"
       activity.comment_attachments = ["#{perm.upload_id}/LICENSE.txt"]
-      activity.save
+      activity.save!
 
       eventually do
         activity = Activity.find(activity.id)
