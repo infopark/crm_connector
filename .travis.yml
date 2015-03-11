@@ -3,6 +3,7 @@ sudo: false
 rvm:
   - "1.9.3"
   - "2.0.0"
+cache: bundler
 env:
   global:
     # Define and encrypt the following credentials.
