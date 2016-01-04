@@ -23,10 +23,6 @@ module Infopark; module Crm
       assert_show_fails(Contact, 9999)
     end
 
-    def test_show_contact_with_null_should_fail
-      assert_show_fails(Contact, nil)
-    end
-
     def test_show_contact_account_object
       contact = Contact.find(@@contact_id)
       assert_not_nil(contact.account)
