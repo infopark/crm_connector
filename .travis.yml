@@ -83,11 +83,5 @@ env:
     - "activeresource=3.2"
     - "activeresource=4.0"
 
-before_install:
-  - gem update --system
-  - gem --version
-  - gem update bundler
-  - bundle version
-
 before_script:
   - bundle exec rake cleanup
