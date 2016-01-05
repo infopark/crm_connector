@@ -38,10 +38,6 @@ module Infopark; module Crm
       assert_show_fails(EventContact, 9999)
     end
 
-    def test_show_event_contact_with_null_should_fail
-      assert_show_fails(EventContact, nil)
-    end
-
     def test_show_event_contact_contact_object
       event_contact = EventContact.find(@@event_contact_id)
 

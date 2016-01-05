@@ -18,10 +18,6 @@ module Infopark; module Crm
     def test_find_role_with_nonexisting_id_should_fail
       assert_show_fails(Role, 9999)
     end
-
-    def test_find_role_with_null_should_fail
-      assert_show_fails(Role, nil)
-    end
   end
 
 end; end

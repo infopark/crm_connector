@@ -52,12 +52,6 @@ module Infopark; module Crm
       end
     end
 
-    def test_find_by_id_with_null_should_raise_an_error
-      assert_raise ActiveResource::ResourceNotFound do
-        Event.find(nil)
-      end
-    end
-
   end
 
 end; end

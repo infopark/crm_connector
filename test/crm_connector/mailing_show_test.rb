@@ -27,10 +27,6 @@ module Infopark; module Crm
       assert_show_fails(Mailing, 9999)
     end
 
-    def test_show_mailing_with_null_should_fail
-      assert_show_fails(Mailing, nil)
-    end
-
     def test_show_mailing_event_object
       CrmSetup.custom_types
       e = Event.create(:title => 'A mailing Event',

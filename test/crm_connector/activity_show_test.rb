@@ -21,10 +21,6 @@ module Infopark; module Crm
       assert_show_fails(Activity, 9999)
     end
 
-    def test_show_activity_with_null_should_fail
-      assert_show_fails(Activity, nil)
-    end
-
     def test_show_activtity_contact_object
       contact_id = Contact.create(:gender => 'M', :language => 'en', :last_name => 'Requester').id
       @@activity.contact_id = contact_id

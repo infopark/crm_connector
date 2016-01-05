@@ -3,6 +3,7 @@ sudo: false
 rvm:
   - "1.9.3"
   - "2.0.0"
+  - "2.2.0"
 cache: bundler
 git:
   # travis uses shallow clones (git clone --depth 50). The default is too small.
@@ -81,6 +82,12 @@ env:
   matrix:
     - "activeresource=3.2"
     - "activeresource=4.0"
+
+before_install:
+  - gem update --system
+  - gem --version
+  - gem update bundler
+  - bundle version
 
 before_script:
   - bundle exec rake cleanup
