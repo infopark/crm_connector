@@ -80,7 +80,6 @@ env:
     - secure: "OaIk50/hJHUdEYfOixO6PP53AjAcQN3NNpEP81eBvIx+sGG8H8F6O84FDTZBsZuQ8WItQygOJwHa2fpJrSCtaVNIb/Zw8emgoeqdRulAfD+qzZrnUJx4m7gXaZuojccBBuCOy/GB1hZHSpfIbGQ4ycV+odKfhZtRC9efgw5empA="
 
   matrix:
-    - "activeresource=3.2"
     - "activeresource=4.0"
 
 before_script:

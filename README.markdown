@@ -97,7 +97,7 @@ Run tests with the current version of Active Resource:
 # Changelog
 
 ## Version 1.3.0 - TBD
-* Removed support for ActiveResource 3.1.
+* Removed support for ActiveResource 3.x. ActiveResource 4.0 is now the minimum version.
 
 ## Version 1.2.0 - 2014-03-26
 * Added support for ActiveResource 4.0.

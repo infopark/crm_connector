@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.has_rdoc = 'yard'
   s.license = 'LGPL-3.0'
 
-  s.add_dependency("activeresource", ">=3.2")
+  s.add_dependency("activeresource", ">=4.0")
 end
