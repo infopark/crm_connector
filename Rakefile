@@ -1,4 +1,3 @@
-require 'appraisal'
 require 'rake/testtask'
 
 begin

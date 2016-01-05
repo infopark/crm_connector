@@ -10,8 +10,6 @@ gem "test-unit"
 gem "webmock"
 gem "pry"
 
-gem "appraisal"
-
 gem 'helpful_configuration'
 
 if RUBY_VERSION =~ /^1\.9/

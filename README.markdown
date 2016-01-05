@@ -84,12 +84,6 @@ Run tests with the current version of Active Resource:
 
     bundle exec rake test
 
-
-Run tests with all supported versions of Active Resource:
-
-    bundle exec rake appraisal:install
-    bundle exec rake appraisal
-
 ## Build and install gem
 
     bundle exec rake gem     #build
