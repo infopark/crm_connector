@@ -24,7 +24,7 @@ module Infopark; module Crm
     def test_unknown_resource_should_throw_an_exception
       begin
         FailingResource.find('unknown')
-      rescue ActiveResource::ServerError => e
+      rescue ActiveResource::ServerError
         return
       end
       fail "Test setup error"

@@ -1,10 +1,7 @@
 language: ruby
-sudo: false
-rvm:
-  - "1.9.3"
-  - "2.0.0"
-  - "2.2.0"
+rvm: 2.2.2
 cache: bundler
+sudo: false
 git:
   # travis uses shallow clones (git clone --depth 50). The default is too small.
   # Increasing the default to enable `git describe`
@@ -79,8 +76,28 @@ env:
     - secure: "G+kSxneNk8NJ0iuIcTlOEL9sEDTW/llWZ9XTNfpoOBlzxPJmWxN3Gb2VlKjjSL3CUvvXBuAgYWO+5k5d2T0UEcVd2eHs4DVCrA+rpZroJFtUfvbo1Wkuz5mutvsUFtDweVWrDgx5WlZNMIMuv5bAHg7re8sZ14tBuwI8pdrgth4="
     - secure: "OaIk50/hJHUdEYfOixO6PP53AjAcQN3NNpEP81eBvIx+sGG8H8F6O84FDTZBsZuQ8WItQygOJwHa2fpJrSCtaVNIb/Zw8emgoeqdRulAfD+qzZrnUJx4m7gXaZuojccBBuCOy/GB1hZHSpfIbGQ4ycV+odKfhZtRC9efgw5empA="
 
-  matrix:
-    - "activeresource=4.0"
+matrix:
+  exclude:
+    - rvm: 2.2.2
+  include:
+    - env: "TASK=test"
+      rvm: 2.0.0
+      gemfile: gemfiles/rails_4.0.gemfile
+    - env: "TASK=test"
+      rvm: 2.0.0
+      gemfile: gemfiles/rails_4.1.gemfile
+    - env: "TASK=test"
+      rvm: 2.0.0
+      gemfile: gemfiles/rails_4.gemfile
+    - env: "TASK=test"
+      rvm: 2.2.2
+      gemfile: gemfiles/rails_4.0.gemfile
+    - env: "TASK=test"
+      rvm: 2.2.2
+      gemfile: gemfiles/rails_4.1.gemfile
+    - env: "TASK=test"
+      rvm: 2.2.2
+      gemfile: gemfiles/rails_4.gemfile
 
-before_script:
-  - bundle exec rake cleanup
+script: bundle exec rake $TASK
+after_script: bundle exec rake cleanup

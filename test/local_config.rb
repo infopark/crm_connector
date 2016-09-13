@@ -3,7 +3,7 @@ require 'json'
 
 def either_file(*files)
   found = files.detect do |file|
-    File.exists?(file)
+    File.exist?(file)
   end
   raise "Could not find any of the files #{files.join(', ')}" unless found
   found
