@@ -5,16 +5,11 @@ gemspec
 
 # Dependencies for test environment
 gem "appraisal"
+gem "helpful_configuration"
+gem "pry"
 gem "rake"
+gem "redcarpet"
 gem "rest-client"
 gem "test-unit"
 gem "webmock", "~> 2.1"
-gem "pry"
-
-gem 'helpful_configuration'
-
-if RUBY_VERSION =~ /^1\.9/
-  gem 'json'
-  gem "redcarpet"
-  gem "yard"
-end
+gem "yard"
