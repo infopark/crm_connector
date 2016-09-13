@@ -8,7 +8,7 @@ gem "appraisal"
 gem "rake"
 gem "rest-client"
 gem "test-unit"
-gem "webmock"
+gem "webmock", "~> 2.1"
 gem "pry"
 
 gem 'helpful_configuration'
