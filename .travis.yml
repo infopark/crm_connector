@@ -99,7 +99,7 @@ matrix:
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.gemfile
     - env: "TASK=yard"
-      rvm: 1.9.2
+      rvm: 1.9.3
 
 script: bundle exec rake $TASK
 after_script: bundle exec rake cleanup
