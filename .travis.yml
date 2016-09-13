@@ -80,26 +80,25 @@ matrix:
   exclude:
     - rvm: 2.2.2
   include:
-    - env: "TASK=test"
+    - env: "TASK=travis"
       rvm: 2.0.0
       gemfile: gemfiles/rails_4.0.gemfile
-    - env: "TASK=test"
+    - env: "TASK=travis"
       rvm: 2.0.0
       gemfile: gemfiles/rails_4.1.gemfile
-    - env: "TASK=test"
+    - env: "TASK=travis"
       rvm: 2.0.0
       gemfile: gemfiles/rails_4.gemfile
-    - env: "TASK=test"
+    - env: "TASK=travis"
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.0.gemfile
-    - env: "TASK=test"
+    - env: "TASK=travis"
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.1.gemfile
-    - env: "TASK=test"
+    - env: "TASK=travis"
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.gemfile
     - env: "TASK=yard"
       rvm: 2.0.0
 
 script: bundle exec rake $TASK
-after_script: bundle exec rake cleanup
