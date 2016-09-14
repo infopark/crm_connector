@@ -29,20 +29,14 @@ module Infopark; module Crm
       assert_equal 0, result.size
     end
 
-    class TestActivity < Activity; end
     def test_iterating_within_limits_makes_no_2nd_request
-      $test_request_count = 0
-      def TestActivity.connection
-        $test_request_count += 1
-        super
-      end
-      result = TestActivity.find(:all, :params => {:limit => 2})
-      result.next
-      assert_equal 1, $test_request_count
-      result.next
-      assert_equal 1, $test_request_count unless RUBY_VERSION.start_with? "1.8"
-      result.next
-      assert_equal 2, $test_request_count
+      WebMock.enable!
+      WebMock.allow_net_connect!
+      WebMock.reset!
+      Activity.find(:all, :params => {:limit => 2}).take(3)
+      assert_requested(:get, "#{Activity.site}activities.json", query: hash_including(limit: '2'), times: 2)
+    ensure
+      WebMock.disable!
     end
 
     def test_access_without_auto_continuation

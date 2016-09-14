@@ -5,7 +5,7 @@ module Infopark; module Crm; module Core
     # @private
     def initialize(collection, continuation_handle, size, &block)
       update(collection, continuation_handle, size)
-      super &block
+      super(&block)
     end
 
     ##

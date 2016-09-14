@@ -1,3 +1,5 @@
+require "rubygems"
+require "bundler/setup"
 require 'rake/testtask'
 
 begin
@@ -17,6 +19,7 @@ Rake::TestTask.new do |t|
 end
 
 task :default => :test
+task :travis => [:test, :cleanup]
 
 gemspec = eval(File.read('infopark_crm_connector.gemspec'))
 

@@ -7,8 +7,8 @@ rdoc/*
 *.gem
 .bundle
 Gemfile.lock
+*.gemfile.lock
 pkg/*
-gemfiles/*
 test/config.json
 doc/*
 .yardoc
