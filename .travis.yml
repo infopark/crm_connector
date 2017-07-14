@@ -60,14 +60,6 @@ matrix:
     - rvm: 2.2.2
   include:
     - env: "TASK=travis"
-      rvm: 2.0.0
-      gemfile: gemfiles/rails_4.0.gemfile
-    - env: "TASK=travis"
-      rvm: 2.0.0
-      gemfile: gemfiles/rails_4.1.gemfile
-    - env: "TASK=travis"
-      rvm: 2.0.0
-      gemfile: gemfiles/rails_4.gemfile
     - env: "TASK=travis"
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.0.gemfile
