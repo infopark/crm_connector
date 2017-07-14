@@ -70,6 +70,6 @@ matrix:
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.gemfile
     - env: "TASK=yard"
-      rvm: 2.0.0
+      rvm: 2.2.2
 
 script: bundle exec rake $TASK
