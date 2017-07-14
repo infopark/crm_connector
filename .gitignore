@@ -12,3 +12,4 @@ pkg/*
 test/config.json
 doc/*
 .yardoc
+.env.*
