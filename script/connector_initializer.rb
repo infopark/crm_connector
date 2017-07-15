@@ -2,12 +2,11 @@
 
 require "pathname"
 require File.dirname(__FILE__) + '/../lib/infopark_crm_connector'
-require File.dirname(__FILE__) + '/../test/local_config'
 
 Infopark::Crm.configure do |config|
-  config.login = local_config['login']
-  config.api_key = local_config['api_key']
-  config.url = local_config['url']
+  config.login = ENV['CRM_LOGIN']
+  config.api_key = ENV['CRM_API_KEY']
+  config.url = ENV['CRM_API_URL'] || "https://#{ENV['CRM_TENANT']}.crm.infopark.net"
 end
 
 include Infopark::Crm

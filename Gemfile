@@ -5,7 +5,6 @@ gemspec
 
 # Dependencies for test environment
 gem "appraisal"
-gem "helpful_configuration"
 gem "pry"
 gem "rake"
 gem "redcarpet"

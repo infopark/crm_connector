@@ -6,12 +6,11 @@ require 'test/unit'
 require 'webmock/test_unit'
 WebMock.disable!
 require File.dirname(__FILE__) + '/connector_test_helper'
-require File.dirname(__FILE__) + '/local_config'
 
 Infopark::Crm.configure do |config|
-  config.login = local_config['login']
-  config.api_key = local_config['api_key']
-  config.url = local_config['url']
+  config.login = ENV['CRM_LOGIN']
+  config.api_key = ENV['CRM_API_KEY']
+  config.url = ENV['CRM_API_URL'] || "https://#{ENV['CRM_TENANT']}.crm.infopark.net"
 end
 
 module CrmSetup
