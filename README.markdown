@@ -2,7 +2,11 @@
 
 [![Build Status](https://travis-ci.org/infopark/crm_connector.png?branch=master)](https://travis-ci.org/infopark/crm_connector)
 
-Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm). It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/). Currently, the latest versions of Active Resource 4 and 5 with Ruby 2.2.2 are tested and supported.
+Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm) API v1. It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/).
+
+**API v1 is the old API. For API v2 please refer to the [Infopark WebCRM SDK](https://github.com/infopark/webcrm_sdk). It is highly recommended to upgrade to WebCRM SDK.**
+
+Currently, the latest version of Active Resource 4 with Ruby 2.2.2 is tested and supported. It is not planned to ever support Active Resource 5.
 
 # Installation
 
@@ -23,9 +27,6 @@ Install the gem with [Bundler](http://gembundler.com/):
       configuration.login = "webcrm_user"
       configuration.api_key = "api_key_of_webcrm_user"
     end
-
-    # See, if it is working
-    Infopark::Crm::Contact.first.last_name
 
 See {Infopark::Crm.configure} for a complete list of configuration keys.
 
@@ -68,30 +69,7 @@ This Ruby SDK provides the WebCRM's domain models {Infopark::Crm::Account Accoun
 
 # Contributing
 
-The source code is freely available at (https://github.com/infopark/crm_connector). Pull requests are welcome.
-
-## Get started
-
-    git clone git@github.com:infopark/crm_connector.git
-    cd crm_connector/
-    bundle
-
-## Run tests
-
-Define env vars:
-
-```
-export CRM_API_URL=...
-export CRM_LOGIN=...
-export CRM_API_KEY=...
-```
-
-Run tests:
-
-```
-bundle exec appraisal install
-bundle exec appraisal rake test
-```
+We no longer accept contributions for this repo. Please consider upgrading to [Infopark WebCRM SDK](https://github.com/infopark/webcrm_sdk) which is a client for API v2.
 
 ## Build and install gem
 
@@ -105,8 +83,9 @@ bundle exec appraisal rake test
 
 # Changelog
 
-## Version 1.3.0 - TBD
-* Removed support for ActiveResource 3.x. ActiveResource 4.0 is now the minimum version.
+## Version 1.3.0 - 2017-07-15
+* Removed support for ActiveResource 3.x. ActiveResource 4.x is supported only.
+* CRM Connector is deprecated in favor of [WebCRM SDK (API v2)](https://github.com/infopark/webcrm_sdk)
 
 ## Version 1.2.0 - 2014-03-26
 * Added support for ActiveResource 4.0.

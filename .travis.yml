@@ -22,9 +22,6 @@ matrix:
     - env: "TASK=travis"
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.gemfile
-    - env: "TASK=travis"
-      rvm: 2.2.2
-      gemfile: gemfiles/rails_5.gemfile
     - env: "TASK=yard"
       rvm: 2.2.2
 
