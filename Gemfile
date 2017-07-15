@@ -10,5 +10,6 @@ gem "rake"
 gem "redcarpet"
 gem "rest-client"
 gem "test-unit"
+gem "travis", require: false
 gem "webmock", "~> 2.1"
 gem "yard"
