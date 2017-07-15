@@ -20,15 +20,11 @@ matrix:
     - rvm: 2.2.2
   include:
     - env: "TASK=travis"
-    - env: "TASK=travis"
-      rvm: 2.2.2
-      gemfile: gemfiles/rails_4.0.gemfile
-    - env: "TASK=travis"
-      rvm: 2.2.2
-      gemfile: gemfiles/rails_4.1.gemfile
-    - env: "TASK=travis"
       rvm: 2.2.2
       gemfile: gemfiles/rails_4.gemfile
+    - env: "TASK=travis"
+      rvm: 2.2.2
+      gemfile: gemfiles/rails_5.gemfile
     - env: "TASK=yard"
       rvm: 2.2.2
 

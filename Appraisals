@@ -1,11 +1,7 @@
-appraise "rails-4.0" do
-  gem "activeresource", "~>4.0.0"
-end
-
-appraise "rails-4.1" do
-  gem "activeresource", "~>4.1.0"
-end
-
-appraise "rails-4" do
+appraise "rails_4" do
   gem "activeresource", "~>4.0"
+end
+
+appraise "rails_5" do
+  gem "activeresource", "~>5.0"
 end

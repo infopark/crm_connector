@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/infopark/crm_connector.png?branch=master)](https://travis-ci.org/infopark/crm_connector)
 
-Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm). It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/). Currently, Active Resource 4.0, 4.1 and 4.2 in combination with Ruby 2.0.0 and 2.2.2 are tested and supported.
+Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://www.infopark.de/webcrm). It basically wraps the [WebCRM web services API](http://kb.infopark.de/crm-api) using [Active Resource](http://rubydoc.info/gems/activeresource/). Currently, the latest versions of Active Resource 4 and 5 with Ruby 2.2.2 are tested and supported.
 
 # Installation
 
@@ -78,11 +78,20 @@ The source code is freely available at (https://github.com/infopark/crm_connecto
 
 ## Run tests
 
-Configure `test/config.json` with an empty WebCRM tenant (see `test/config_template.json`)
+Define env vars:
 
-Run tests with the current version of Active Resource:
+```
+export CRM_API_URL=...
+export CRM_LOGIN=...
+export CRM_API_KEY=...
+```
 
-    bundle exec rake test
+Run tests:
+
+```
+bundle exec appraisal install
+bundle exec appraisal rake test
+```
 
 ## Build and install gem
 
