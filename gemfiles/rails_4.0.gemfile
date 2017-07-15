@@ -3,7 +3,6 @@
 source "https://rubygems.org"
 
 gem "appraisal"
-gem "helpful_configuration"
 gem "pry"
 gem "rake"
 gem "redcarpet"
@@ -13,4 +12,4 @@ gem "webmock", "~> 2.1"
 gem "yard"
 gem "activeresource", "~>4.0.0"
 
-gemspec :path => "../"
+gemspec path: "../"
