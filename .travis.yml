@@ -1,5 +1,5 @@
 language: ruby
-rvm: 2.2.2
+rvm: 2.4.4
 cache: bundler
 sudo: false
 git:
@@ -17,12 +17,12 @@ env:
   - secure: "HFGK2lZQdFlz8AxSoJOKMm5wfraqkN2rOCPicaH9/iczKo92/iPcxA5bgNT8Qu1TFSUN8otETIaTKBZTD9+d97Ikd3E9KmRxrTQ/6dMhwizavooLQaX5uem7/QLhCMld58PruyoxGaPUMqGAtwiZPfk2wyPIV16vo0y3PG/r7sE="
 matrix:
   exclude:
-    - rvm: 2.2.2
+    - rvm: 2.4.4
   include:
     - env: "TASK=travis"
-      rvm: 2.2.2
+      rvm: 2.4.4
       gemfile: gemfiles/rails_4.gemfile
     - env: "TASK=yard"
-      rvm: 2.2.2
+      rvm: 2.4.4
 
 script: bundle exec rake $TASK

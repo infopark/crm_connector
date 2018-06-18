@@ -6,7 +6,7 @@ Infopark WebCRM Connector is the official Ruby SDK for [Infopark WebCRM](http://
 
 **API v1 is the old API. For API v2 please refer to the [Infopark WebCRM SDK](https://github.com/infopark/webcrm_sdk). It is highly recommended to upgrade to WebCRM SDK.**
 
-Currently, the latest version of Active Resource 4 with Ruby 2.2.2 is tested and supported. It is not planned to ever support Active Resource 5.
+Currently, the latest version of Active Resource 4 with Ruby 2.4.4 is tested and supported. It is not planned to ever support Active Resource 5.
 
 # Installation
 
