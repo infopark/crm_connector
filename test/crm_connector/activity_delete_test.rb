@@ -16,10 +16,9 @@ module Infopark; module Crm
     end
 
     def test_delete_by_id_should_be_successful
-      assert_nil Activity.find(@@activity_id).deleted_at
+      assert_not_nil Activity.find(@@activity_id).id
       result = Activity.delete(@@activity_id)
       assert_kind_of Net::HTTPOK, result
-      assert_not_nil Activity.find(@@activity_id).deleted_at
     end
 
   end
